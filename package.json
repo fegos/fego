@@ -1,0 +1,43 @@
+{
+	"name": "fego",
+	"version": "0.0.1",
+	"description": "基于 React 的web开发库",
+	"homepage": "http://fe.hhtcex.com",
+	"main": "lib/index.js",
+	"module": "es/index.js",
+	"author": "esky asyxu",
+	"keywords": [
+		"fego",
+		"react",
+		"react-component",
+		"component",
+		"components",
+		"ui",
+		"framework",
+		"desktop",
+		"mobile"
+	],
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/fegos/fego"
+	},
+	"bugs": {
+		"url": "http://github.com/fegos/fego/issues"
+	},
+	"files": [],
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {},
+	"scripts": {
+		"init": "npm install --no-optional -s --registry=https://registry.npm.taobao.org",
+		"mock": "esky-mock -c www/mock/config.js",
+		"start": "cross-env NODE_ENV=development BABEL_ENV=es webpack-dev-server --progress --config www/config/webpack.config.js",
+		"start-mob": "cross-env NODE_ENV=development BABEL_ENV=es webpack-dev-server --progress --config www/config/webpack.mob.config.js",
+		"build-www": "npm run build-desk && npm run build-mob",
+		"build-desk": "rm -rf ./www/build/desktop && cross-env NODE_ENV=production BABEL_ENV=es webpack --progress --config www/config/webpack.config.js",
+		"build-mob": "rm -rf ./www/build/mobile && cross-env NODE_ENV=production BABEL_ENV=es webpack --progress --config www/config/webpack.mob.config.js",
+		"build": "npm run build:commonjs && npm run build:es",
+		"build:commonjs": "rm -rf lib && cross-env BABEL_ENV=commonjs babel src --out-dir lib --copy-files && cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+		"build:es": "rm -rf es &&cross-env BABEL_ENV=es babel src --out-dir es --copy-files && cross-env BABEL_ENV=es babel src --out-dir es"
+	}
+}
