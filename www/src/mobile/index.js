@@ -8,7 +8,7 @@ import { createBrowserHistory } from 'history'
 import thunk from 'redux-thunk'
 import Router from 'mobile/Router'
 import routes from 'mobile/sys/route'
-import Frame from 'Frame'
+import Frame from 'frame'
 
 const history = createBrowserHistory()
 const store = createStore(

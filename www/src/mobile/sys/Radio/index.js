@@ -28,45 +28,35 @@ export default class Page extends Component {
 		
 		return (
 			<div>
-				<div style={{marginTop: '10px'}}>
-					<h3>单独使用的 Radio</h3>
-					<Radio defaultChecked={true} onChange={(e)=>{console.log(e.target.checked)}}>使用defaultChecked=true</Radio>
-					<Radio value='1' defaultChecked={false} onChange={(e)=>{console.log(e.target.checked,e.target.value)}}>使用defaultChecked=false</Radio>
-					<Radio checked={this.state.radio1} onChange={(e)=>{console.log(e.target.checked);this.setState({radio1: e.target.checked})}}>使用checked=true</Radio>
-					<Radio value='2' checked={this.state.radio2} onChange={(e)=>{console.log(e.target.checked,e.target.value);this.setState({radio2: e.target.checked})}}>使用checked=false</Radio>
-					<Radio disabled checked={true} >disabled</Radio>
-					<Radio disabled checked={false} >disabled</Radio>
-				</div>
+				<p className='title'>单独使用的 Radio</p>
+				<div><Radio defaultChecked={true} onChange={(e)=>{console.log(e.target.checked)}}>使用 defaultChecked = true</Radio></div>
+				<div><Radio value='1' defaultChecked={false} onChange={(e)=>{console.log(e.target.checked,e.target.value)}}>使用 defaultChecked = false</Radio></div>
+				<div><Radio checked={this.state.radio1} onChange={(e)=>{console.log(e.target.checked);this.setState({radio1: e.target.checked})}}>使用 checked = true</Radio></div>
+				<div><Radio value='2' checked={this.state.radio2} onChange={(e)=>{console.log(e.target.checked,e.target.value);this.setState({radio2: e.target.checked})}}>使用 checked = false</Radio></div>
+				<div><Radio disabled checked={true} >disabled checked radio</Radio></div>
+				<div><Radio disabled checked={false} >disabled unchecked radio</Radio></div>
+				
+				<p className='title'>组合使用的 Radio，不带 defaultValue: </p>
+				<Radio.Group name='course1' onChange={(e)=>{console.log(e.target.value)}}>
+					{opt}
+				</Radio.Group>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Radio，不带 defaultValue: </h3>
-					<Radio.Group name='course1' onChange={(e)=>{console.log(e.target.value)}}>
-						{opt}
-					</Radio.Group>
-				</div>
+				<p className='title'>组合使用的 Radio，带 defaultValue: </p>
+				<Radio.Group name='course2' defaultValue='che' onChange={(e)=>{console.log(e.target.value)}}>
+					{opt}
+				</Radio.Group>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Radio，带 defaultValue: </h3>
-					<Radio.Group name='course2' defaultValue='che' onChange={(e)=>{console.log(e.target.value)}}>
-						{opt}
-					</Radio.Group>
-				</div>
+				<p className='title'>组合使用的 Radio，带 value: </p>
+				<Radio.Group name='course3' value={this.state.radioGroupValue1} onChange={(e)=>{this.setState({
+					radioGroupValue1: e.target.value
+				})}}>
+					{opt}
+				</Radio.Group>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Radio，带 value: </h3>
-					<Radio.Group name='course3' value={this.state.radioGroupValue1} onChange={(e)=>{this.setState({
-						radioGroupValue1: e.target.value
-					})}}>
-						{opt}
-					</Radio.Group>
-				</div>
-
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Radio，以配置项形式设置子元素: </h3>
-					<Radio.Group name='course4' options={opt2} value={this.state.radioGroupValue2} onChange={(e)=>{this.setState({
-						radioGroupValue2: e.target.value
-					})}} />
-				</div>
+				<p className='title'>组合使用的 Radio，以配置项形式设置子元素: </p>
+				<Radio.Group name='course4' options={opt2} value={this.state.radioGroupValue2} onChange={(e)=>{this.setState({
+					radioGroupValue2: e.target.value
+				})}} />
 			</div>
 		)
 	}

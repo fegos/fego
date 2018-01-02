@@ -28,51 +28,57 @@ export default class Page extends Component {
 		
 		return (
 			<div>
-				<div style={{marginTop: '10px'}}>
-					<h3>单独使用的 Checkbox</h3>
-					<Checkbox defaultChecked={true} onChange={(e)=>{console.log(e.target.checked)}}>使用defaultChecked=true</Checkbox>
-					<Checkbox defaultChecked={false} onChange={(e)=>{console.log(e.target.checked)}}>使用defaultChecked=false</Checkbox>
-					<Checkbox checked={this.state.checked1} onChange={(e)=>{console.log(e.target.checked);this.setState({checked1: e.target.checked})}}>使用checked=true</Checkbox>
-					<Checkbox checked={this.state.checked2} onChange={(e)=>{console.log(e.target.checked);this.setState({checked2: e.target.checked})}}>使用checked=false</Checkbox>
-					<Checkbox disabled checked={true} onChange={(e)=>{console.log(e.target.checked)}} >disabled</Checkbox>
-					<Checkbox disabled checked={false} onChange={(e)=>{console.log(e.target.checked)}} >disabled</Checkbox>
+				<p className='title'>单独使用的 Checkbox：</p>
+				<div>
+					<Checkbox defaultChecked={true} onChange={(e)=>{console.log(e.target.checked)}}>使用 defaultChecked = true</Checkbox>
+				</div>
+				<div>
+					<Checkbox defaultChecked={false} onChange={(e)=>{console.log(e.target.checked)}}>使用 defaultChecked = false</Checkbox>
+				</div>
+				<div>
+					<Checkbox checked={this.state.checked1} onChange={(e)=>{
+						console.log(e.target.checked);
+						this.setState({checked1: e.target.checked})}}>使用 checked = true</Checkbox>
+				</div>
+				<div>
+					<Checkbox checked={this.state.checked2} onChange={(e)=>{
+						console.log(e.target.checked);
+						sthis.setState({checked2: e.target.checked})}}>使用 checked = false</Checkbox>
+				</div>
+				<div>
+					<Checkbox disabled checked={true} onChange={(e)=>{console.log(e.target.checked)}} >disabled checked checkbox</Checkbox>
+				</div>
+				<div>
+					<Checkbox disabled checked={false} onChange={(e)=>{console.log(e.target.checked)}} >disabled unchecked checkbox</Checkbox>
 				</div>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Checkbox, 不带 defaultValue: </h3>
-					<Checkbox.Group name='cbox1' onChange={(v)=>{console.log(v)}}>
-						{opt}
-					</Checkbox.Group>
-				</div>
+				<p className='title'>组合使用的 Checkbox, 不带 defaultValue: </p>
+				<Checkbox.Group name='cbox1' onChange={(v)=>{console.log(v)}}>
+					{opt}
+				</Checkbox.Group>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Checkbox, 带 defaultValue: </h3>
-					<Checkbox.Group name='cbox2' defaultValue={['chi']} onChange={(v)=>{console.log(v)}}>
-						{opt}
-					</Checkbox.Group>
-				</div>
+				<p className='title'>组合使用的 Checkbox, 带 defaultValue: </p>
+				<Checkbox.Group name='cbox2' defaultValue={['chi']} onChange={(v)=>{console.log(v)}}>
+					{opt}
+				</Checkbox.Group>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Checkbox, 使用 value: </h3>
-					<Checkbox.Group name='cbox3' value={this.state.checkboxGroupValue1} onChange={(v)=>{
-						console.log(v)
-						this.setState({
-							checkboxGroupValue1: v
-						})
-					}}>
-						{opt}
-					</Checkbox.Group>
-				</div>
+				<p className='title'>组合使用的 Checkbox, 使用 value: </p>
+				<Checkbox.Group name='cbox3' value={this.state.checkboxGroupValue1} onChange={(v)=>{
+					console.log(v)
+					this.setState({
+						checkboxGroupValue1: v
+					})
+				}}>
+					{opt}
+				</Checkbox.Group>
 
-				<div style={{marginTop: '10px'}}>
-					<h3>组合使用的 Checkbox, 以配置项形式设置子元素: </h3>
-					<Checkbox.Group name='cbox4' options={opts2} value={this.state.checkboxGroupValue2} onChange={(v)=>{
-						console.log(v)
-						this.setState({
-							checkboxGroupValue2: v
-						})
-					}} />
-				</div>
+				<p className='title'>组合使用的 Checkbox, 以配置项形式设置子元素: </p>
+				<Checkbox.Group name='cbox4' options={opts2} value={this.state.checkboxGroupValue2} onChange={(v)=>{
+					console.log(v)
+					this.setState({
+						checkboxGroupValue2: v
+					})
+				}} />
 			</div>
 		)
 	}
