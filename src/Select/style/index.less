@@ -1,0 +1,275 @@
+@import "../../style/mixin/index";
+@import "../../Icon/style/index";
+@select-prefix: ~"@{prefix}-select";
+
+@select-height-base: 28px;
+@select-height-lg: 32px;
+@select-height-sm: 22px;
+@select-option-padding-horizontal: 8px;
+@select-option-padding-vertical: 7px;
+@select-padding-vertical: 7px;
+
+@keyframes dropdown-menu-fadein {
+	0% {
+		opacity: 0;
+		transform-origin: 0% 0%;
+		transform: scaleY(.8);
+	}
+	100% {
+		opacity: 1;
+		transform-origin: 0% 0%;
+		transform: scaleY(1);
+	}
+}
+
+@keyframes dropdown-menu-fadeout {
+	0% {
+		opacity: 1;
+		transform-origin: 0% 0%;
+		transform: scaleY(1);
+	}
+	100% {
+		opacity: 0;
+		transform-origin: 0% 0%;
+		transform: scaleY(.8);
+	}
+}
+
+@keyframes arrow-down-up {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(90deg);
+	}
+	100% {
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes arrow-up-down {
+	0% {
+		transform: rotate(180deg);
+	}
+	50% {
+		transform: rotate(90deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.@{select-prefix} {
+	box-sizing: border-box;
+	display: inline-block;
+	color: @text-color;
+	font-size: @font-size-base;
+	width: 150px;
+	position: relative;
+	vertical-align: middle;
+	&-selection {
+		display: block;
+		outline: none;
+		user-select: none;
+		box-sizing: border-box;
+		background-color: @component-background;
+		border-radius: @border-radius-base;
+		border: @border-width-base @border-style-base @border-color-base;
+		transition: all .3s @ease-in-out;
+		height: @select-height-base;
+		position: relative;
+		cursor: pointer;
+		&:hover {
+			border-color: @primary-5;
+		}
+		.@{select-prefix}-selection-inner{
+			display: block;
+			margin: 0 @select-padding-vertical;
+			line-height: @select-height-base - @border-width-base * 2;
+		}
+		.@{select-prefix}-selection-selected-value,
+		.@{select-prefix}-selection-placeholder {
+			float: left;
+			display: block;
+			padding-right: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			max-width: 100%;
+		}
+		.@{select-prefix}-selection-placeholder {
+			color: @placeholder-color;
+		}
+	}
+	&-clear {
+		display: none;
+		position: absolute;
+		z-index: 1;
+		top: 50%;
+		transform: translateY(-50%);
+		right: @select-padding-vertical;
+		user-select: none;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background-color: rgba(0, 0, 0, 0.25);
+		text-align: center;
+		transition: background-color .3s @ease-in-out;
+		.@{select-prefix}-icon{
+			width: 0.5em;
+			color: #fff;
+			vertical-align: baseline;
+		}
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.43);
+		}
+	}
+	&-arrow {
+		display: block;
+		position: absolute;
+		top: 50%;
+		right: @select-padding-vertical;
+		user-select: none;
+		transform: translateY(-50%) rotate(-90deg);
+		text-align: center;
+		width: 12px;
+		height: 12px;
+		.@{select-prefix}-icon{
+			width: 0.7em;
+			vertical-align: baseline;
+			transform: rotate(0);
+		}
+		&-down-up {
+			.@{select-prefix}-icon{
+				animation: arrow-down-up .3s;
+			}
+		}
+		&-up-down {
+			.@{select-prefix}-icon{
+				animation: arrow-up-down .3s;
+			}
+		}
+	}
+	&-open {
+		.@{select-prefix}-arrow {
+			.@{select-prefix}-icon {
+				transform: rotate(180deg);
+			}
+		}
+	}
+	&-focused {
+		.@{select-prefix}-selection {
+			border-color: @primary-5;
+			outline: 0;
+			box-shadow: 0 0 @outline-blur-size @outline-width fade(@primary-color, 20%);
+		}
+	}
+	&-disabled {
+		.@{select-prefix}-selection {
+			background-color: @disabled-bg;
+			color: @disabled-color;
+			cursor: not-allowed;
+			&:hover {
+				border-color: @border-color-base;
+			}
+		}
+	}
+	&-dropdown {
+		display: block;
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		top: @select-height-base + 2px;
+		width: 100%;
+		background-color: @component-background;
+		border-radius: @border-radius-base;
+		box-shadow: @box-shadow-base;
+		opacity: 1;
+		animation: dropdown-menu-fadein .3s @ease-in-out;
+		&-hide {
+			display: none;
+		}
+		&-fadeout {
+			opacity: 0;
+			animation: dropdown-menu-fadeout .3s @ease-in-out;
+		}
+		&-menu {
+			max-height: 250px;
+			overflow: auto;
+			&-item {
+				padding: @select-option-padding-vertical @select-option-padding-horizontal;
+				// position: relative;
+				display: block;
+				color: @text-color;
+				white-space: nowrap;
+				cursor: pointer;
+				overflow: hidden;
+				transition: background-color .3s @ease-in-out;
+				&:hover {
+					background-color: @primary-1;
+				}
+			}
+			&-item-selected {
+				// background-color: @primary-2;
+				color: @primary-color;
+				// &:hover {
+				// 	background-color: @primary-2;
+				// }
+			}
+			&-item-disabled {
+				background-color: @component-background;
+				color: @text-color-secondary;
+				cursor: not-allowed;
+				&:hover {
+					background-color: @component-background;;
+				}
+			}
+			&-item-active{
+				background-color: @primary-1;
+			}
+		}
+	}
+	&-lg {
+		// height: @select-height-lg;
+		.@{select-prefix}-selection {
+			height: @select-height-lg;
+			.@{select-prefix}-selection-inner {
+				line-height: @select-height-lg - @border-width-base * 2;
+			}
+		}
+		.@{select-prefix}-dropdown {
+			top: @select-height-lg + 2px;
+		}
+	}
+	&-sm {
+		// height: @select-height-sm;
+		.@{select-prefix}-selection {
+			height: @select-height-sm;
+			.@{select-prefix}-selection-inner {
+				line-height: @select-height-sm - @border-width-base * 2;
+			}
+		}
+		.@{select-prefix}-dropdown {
+			top: @select-height-sm + 2px;
+		}
+	}
+
+	// 清除
+	&-allow-clear {
+		.@{select-prefix}-selection {
+			&:hover {
+				.@{select-prefix}-clear {
+					display: block;
+				}
+			} 
+		}
+		.@{select-prefix}-selection-value {
+			&:hover {
+				.@{select-prefix}-arrow {
+					display: none;
+				}
+			} 
+		}
+	}
+}
+

@@ -1,0 +1,115 @@
+.page {
+    .newsMore {
+        font-size: 14px;
+        font-weight: normal;
+        color: #B79D73;
+        margin-top: 10px;
+    }
+    .title {
+        font-size: 18px;
+        color: #3c3c3c;
+        font-weight: bold;
+        margin: 20px 0 10px;
+        a {
+            font-size: 16px;
+            color: #878787;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        img {
+            margin: -4px 0 0 8px;
+            height: 12px;
+        }
+    }
+    .warpper {
+        border: 1px solid #e5e5e5;
+        border-top: 2px solid #C5AC7D;
+        background: #fff;
+	}
+}
+
+.news {
+	@page-slick-dot-size: 8px;
+    margin-top: 30px;
+    position: relative;
+    .sliderBox {
+        height: 368px;
+	}
+	
+    :global {
+        .ns-carousel {
+            float: left;
+			width: 526px;
+		}
+        .ns-carousel-vertical {
+			.slick-vertical .slick-slide{
+				height: 367px;
+			}
+            .slick-dots {
+				width: @page-slick-dot-size;
+				height: auto;
+				top: auto;
+				bottom: 5%;
+				transform: none;
+                li {
+                    button {
+                        border-radius: 50%;
+                        width: @page-slick-dot-size;
+                        height: @page-slick-dot-size;
+                    }
+                    &.slick-active button {
+                        width: @page-slick-dot-size;
+                    }
+                }
+            }
+        }
+    }
+    .list {
+        overflow: hidden;
+        background: #fff;
+    }
+    p {
+        position: relative;
+        color: #878787;
+        height: 123px;
+        box-sizing: border-box;
+        padding: 30px 40px;
+        border-left: 4px solid #C5AC7D;
+        border-bottom: 1px dashed #e5e5e5;
+        span {
+            font-size: 14px;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .triangle {
+        width: 0;
+        height: 0;
+        display: none;
+        border: 8px solid #C5AC7D;
+        border-bottom-color: transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        position: absolute;
+        left: 0;
+        top: 52px;
+    }
+    .active {
+        background: #f9f9f9;
+        .triangle {
+            display: block;
+        }
+    }
+    a {
+        font-size: 16px;
+        font-weight: bold;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

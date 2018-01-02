@@ -1,0 +1,1 @@
+import './index.mob.less'; 
