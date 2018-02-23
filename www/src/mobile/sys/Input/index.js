@@ -19,7 +19,7 @@ export default class Page extends Component {
 				<Input prefix={<Icon name="plus" />}
 					suffix={<Icon name="minus" />} placeholder='请输入' />
 				
-				<p className='title'>显示清楚按钮的输入框: </p>
+				<p className='title'>显示清除按钮的输入框: </p>
 				<Input showClear={true} onPressEnter={(e) => { console.log(e) }} defaultValue='default value' />
 				
 				<p className='title'>size='large' 输入框: </p>
