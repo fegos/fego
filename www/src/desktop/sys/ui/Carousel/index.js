@@ -51,7 +51,7 @@ class NewsSlider extends React.Component {
 	// }
 	render() {
 		return (
-			<div className={`${style.news} g-ctn`} >
+			<div className={`${style.news}`} >
 				<h2 className={style.title}>农产品头条</h2>
 				<div className={`${style.sliderBox} f-cb`} >
 					<Carousel ref={el=> this.slick = el && el.slick} {...{

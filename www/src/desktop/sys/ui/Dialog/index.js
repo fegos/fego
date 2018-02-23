@@ -66,7 +66,7 @@ export default class Page extends React.Component {
 	}
 	render() {
 		return (
-			<div className={style.page + ' g-ctn'}>
+			<div className={style.page}>
 				<Button onClick={this.showDialog}>传统方式打开对话框</Button>
 				<br/>
 				<Button onClick={this.showConfirmDialog} style={{marginTop: '20px'}}>api 方式打开 confirm 对话框</Button>
