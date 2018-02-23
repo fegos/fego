@@ -12,6 +12,7 @@ export default class Frame extends Component {
 				<Header />
 				<div className='main'>
 					<ul>
+						<li><Link to='/ui/Button'>按钮 Button</Link></li>
 						<li><Link to='/ui/Dialog'>对话框 Dialog</Link></li>
 						<li><Link to='/ui/Carousel'>走马灯 Carousel</Link></li>
 						<li><Link to='/ui/Pagination'>分页器 Pagination</Link></li>

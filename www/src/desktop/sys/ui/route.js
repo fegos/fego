@@ -1,6 +1,9 @@
 export default [{ 
 	path: '/ui',
 	routes:[{
+		path: '/ui/Button',
+		component: () => import('./Button')
+	}, {
 		path: '/ui/Dialog',
 		component: () => import('./Dialog')
 	}, {
