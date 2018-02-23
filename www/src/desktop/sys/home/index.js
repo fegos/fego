@@ -123,20 +123,6 @@ export default class Home extends Component {
 				<div className={style.hoverIcon}>
 					<Icon name="no" size='28px' style={{ margin: 10 }}/>
 				</div>
-				<Button disabled>disabled Button</Button>
-				<Button loading>loading Button</Button>
-				<Button type="primary">primary Button</Button>
-				<Button type="primary" disabled>disabled primary Button</Button>
-				<Button type="default">default Button</Button>
-				<Button type="danger">danger Button</Button>
-				<Button type="danger" disabled>disabled danger Button</Button>
-				<Button type="ghost">ghost Button</Button>
-				<Button type="ghost" disabled>disabled ghost Button</Button>
-				<Button dashed>dashed Button</Button>
-				<Button shape="circle" icon='plus'></Button>
-				<Button shape="circle" dashed>cd</Button>
-				<Button size='small'>small Button</Button>
-				<Button size='large'>large Button</Button>
 				
 				<Carousel {...{
 					dots: true,
@@ -155,27 +141,6 @@ export default class Home extends Component {
 					<div><h3>6</h3></div>
 				</Carousel>
 
-				<div style={{ width: '50vw', marginTop: '10px' }}>
-					<h3>Input</h3>
-					<Input prefix={<Icon name="plus" />} onPressEnter={(v) => { console.log(v) }} value={this.state.value} onChange={(value) => { this.setState({ value }) }} />
-					<Input suffix={<Icon name="minus" />} placeholder='请输入' />
-					<Input prefix={<Icon name="plus" />}
-						suffix={<Icon name="minus" />} placeholder='请输入' />
-					<Input showClear={true} onPressEnter={(e) => { console.log(e) }} defaultValue='default value' />
-					<Input size='large' prefix={<Icon name="plus" />} showClear={true} defaultValue='large input with prefix and clear' placeholder='large input with prefix and clear' />
-					<Input size='small' prefix={<Icon name="plus" />} showClear={true} defaultValue='small input with prefix and clear' placeholder='small input with prefix and clear' />
-					<Input disabled defaultValue='disabled' />
-				</div>
-
-				<div style={{marginTop: '10px'}}>
-					<h3>TextArea</h3>
-					<Input.TextArea autoSize={{
-						maxRows: 6,
-						minRows: 2
-					}} defaultValue='defaultValue' placeholder='456' resize={false}/>
-					<Input.TextArea autoSize={true} value={this.state.value2} placeholder='456' onChange={(value2) => { this.setState({ value2 }) }}/>
-					<Input.TextArea disabled placeholder='789' />
-				</div>
 
 				<div style={{marginTop: '10px'}}>
 					<h3>Select</h3>

@@ -1,0 +1,19 @@
+.page {
+	padding: 20px 10px;
+	:global {
+		.section {
+			margin-top: 10px;
+			& > p {
+				margin: 20px 0 5px;
+			}
+			&.size {
+				.ns-input {
+					margin-bottom: 10px;
+					&:first-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
