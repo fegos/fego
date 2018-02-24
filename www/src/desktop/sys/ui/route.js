@@ -10,6 +10,9 @@ export default [{
 		path: '/ui/Select',
 		component: () => import('./Select')
 	}, {
+		path: '/ui/Checkbox',
+		component: () => import('./Checkbox')
+	}, {
 		path: '/ui/Dialog',
 		component: () => import('./Dialog')
 	}, {
