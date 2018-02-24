@@ -13,10 +13,11 @@ export default class Frame extends Component {
 				<div className='main'>
 					<ul>
 						<li><Link to='/ui/Button'>按钮 Button</Link></li>
-						<li><Link to='/ui/Input'>输入框 Input</Link></li>
-						<li><Link to='/ui/Dialog'>对话框 Dialog</Link></li>
 						<li><Link to='/ui/Carousel'>走马灯 Carousel</Link></li>
+						<li><Link to='/ui/Dialog'>对话框 Dialog</Link></li>
+						<li><Link to='/ui/Input'>输入框 Input</Link></li>
 						<li><Link to='/ui/Pagination'>分页器 Pagination</Link></li>
+						<li><Link to='/ui/Select'>下拉框 Select</Link></li>
 						<li><Link to='/ui/Table'>表格 Table</Link></li>
 					</ul>
 					<div className='page'>

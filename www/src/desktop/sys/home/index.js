@@ -67,9 +67,6 @@ export default class Home extends Component {
 		super(props)
 
 		this.state = {
-			value: 'value',
-			value2: 'value',
-			selectValue: 'asy',
 			checked1: true,
 			checked2: false,
 			radio1: true,
@@ -84,9 +81,6 @@ export default class Home extends Component {
 		// Fetch.post('test', { a: 1 })
 	}
 	render() {
-		let opts = [<Select.Option value='asy' key='0'>asy</Select.Option>,
-			<Select.Option value='lucky' key='1'>lucky</Select.Option>,
-			<Select.Option value='disabled' disabled key='2'>disabled</Select.Option>]
 		let opts2 = [
 			<Radio value='chi' key='0'>语文</Radio>,
 			<Radio value='mat' key='1'>数学</Radio>,
@@ -140,26 +134,6 @@ export default class Home extends Component {
 					<div><h3>5</h3></div>
 					<div><h3>6</h3></div>
 				</Carousel>
-
-
-				<div style={{marginTop: '10px'}}>
-					<h3>Select</h3>
-					<Select showClear 
-						defaultValue='lucky' 
-						onChange={(v)=>{console.log('1 change')}}
-						onFocus={()=>{console.log('1 focus')}}
-						onBlur={()=>{console.log('1 blur')}}
-					>{opts}</Select>
-					<Select value={this.state.selectValue} 
-						onChange={(v)=>{console.log('2 change', v);this.setState({selectValue: v})}}
-						onFocus={()=>{console.log('2 focus')}}
-						onBlur={()=>{console.log('2 blur')}}
-					>{opts}</Select>
-					<Select placeholder='placeholder'>{opts}</Select>
-					<Select size='small'>{opts}</Select>
-					<Select size='large'>{opts}</Select>
-					<Select disabled defaultValue='disabled'>{opts}</Select>
-				</div>
 
 				<div style={{marginTop: '10px'}}>
 					<h3>单独使用的 Checkbox</h3>

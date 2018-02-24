@@ -7,6 +7,9 @@ export default [{
 		path: '/ui/Input',
 		component: () => import('./Input')
 	}, {
+		path: '/ui/Select',
+		component: () => import('./Select')
+	}, {
 		path: '/ui/Dialog',
 		component: () => import('./Dialog')
 	}, {
