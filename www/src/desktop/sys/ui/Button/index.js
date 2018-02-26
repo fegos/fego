@@ -7,41 +7,41 @@ export default class Page extends Component {
 		return (
 			<div className={style.page}>
 				<div className='section'>
-					<span>默认按钮：</span>
+					<h3>默认按钮：</h3>
 					<Button type="default">default Button</Button>
 					<Button disabled>disabled default Button</Button>
 				</div>
 				<div className='section'>
-					<span>加载中状态：</span>
+					<h3>加载中状态：</h3>
 					<Button loading>loading Button</Button>
 				</div>
 				<div className='section'>
-					<span>主按钮：</span>
+					<h3>主按钮：</h3>
 					<Button type="primary">primary Button</Button>
 					<Button type="primary" disabled>disabled primary Button</Button>
 				</div>
 				<div className='section'>
-					<span>危险按钮：</span>
+					<h3>危险按钮：</h3>
 					<Button type="danger">danger Button</Button>
 					<Button type="danger" disabled>disabled danger Button</Button>
 				</div>
 				<div className='section ghost'>
-					<span>幽灵按钮：</span>
+					<h3>幽灵按钮：</h3>
 					<Button type="ghost">ghost Button</Button>
 					<Button type="ghost" disabled>disabled ghost Button</Button>
 				</div>
 				<div className='section'>
-					<span>虚线按钮：</span>
+					<h3>虚线按钮：</h3>
 					<Button dashed>dashed Button</Button>
 				</div>
 				<div className='section'>
-					<span>按钮尺寸：</span>
+					<h3>按钮尺寸：</h3>
 					<Button size='small'>small Button</Button>
 					<Button>default size Button</Button>
 					<Button size='large'>large Button</Button>
 				</div>
 				<div className='section'>
-					<span>圆形按钮：</span>
+					<h3>圆形按钮：</h3>
 					<Button shape="circle" icon='plus'></Button>
 					<Button shape="circle" dashed>btn</Button>
 				</div>

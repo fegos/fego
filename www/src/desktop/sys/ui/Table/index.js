@@ -241,7 +241,7 @@ const dataSource = [{
 	gender: '女'
 }]
 
-export default class Home extends Component {
+export default class Page extends Component {
 	constructor(props) {
 		super(props)
 
@@ -257,7 +257,7 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div className={style.page}>
-				<Button onClick={()=>{this.setState({loading: !this.state.loading})}}>点我切换loading状态</Button>
+				<Button onClick={()=>{this.setState({loading: !this.state.loading})}} style={{marginBottom: '20px'}}>点我切换loading状态</Button>
 				<Table columns={columns2} dataSource={this.state.tableExampleDataSource} loading={this.state.loading} tfootData={{
 					name: '合计',
 					age: '200',
