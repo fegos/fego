@@ -13,6 +13,9 @@ export default [{
 		path: '/ui/Checkbox',
 		component: () => import('./Checkbox')
 	}, {
+		path: '/ui/Radio',
+		component: () => import('./Radio')
+	}, {
 		path: '/ui/Dialog',
 		component: () => import('./Dialog')
 	}, {

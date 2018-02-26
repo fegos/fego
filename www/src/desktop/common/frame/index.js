@@ -18,6 +18,7 @@ export default class Frame extends Component {
 						<li><Link to='/ui/Dialog'>对话框 Dialog</Link></li>
 						<li><Link to='/ui/Input'>输入框 Input</Link></li>
 						<li><Link to='/ui/Pagination'>分页器 Pagination</Link></li>
+						<li><Link to='/ui/Radio'>单选框 Radio</Link></li>
 						<li><Link to='/ui/Select'>下拉框 Select</Link></li>
 						<li><Link to='/ui/Table'>表格 Table</Link></li>
 					</ul>
