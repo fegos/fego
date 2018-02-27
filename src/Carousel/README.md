@@ -29,11 +29,11 @@ class SimpleSlider extends React.Component {
   render: function () {
     return (
       <Slider {...{
-			dots: true,
-			infinite: true,
-			speed: 500,
-			slidesToShow: 1,
-			slidesToScroll: 1
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
 		}}>
         <div><h3>1</h3></div>
         <div><h3>2</h3></div>

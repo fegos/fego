@@ -1,1 +1,1 @@
-export { default } from './DialogWrap'
+export { default } from './DialogWrap';
