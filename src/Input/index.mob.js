@@ -74,7 +74,7 @@ export default class Input extends Component {
     });
     const { value, onChange, showClear } = this.props;
     if (value === undefined) {
-      this.refs['input'].value = '' // 清空输入框
+      this.refs['input'].value = ''; // 清空输入框
       // 更新清除图标是否显示的状态
       showClear && this.setState({
         showClearIcon: false,
@@ -93,7 +93,9 @@ export default class Input extends Component {
       otherProps.defaultValue && delete otherProps.defaultValue;
     }
     const ipt = (
-      <input ref='input' type='text'
+      <input
+        ref="input"
+        type="text"
         {...otherProps}
         disabled={disabled}
         className={classNames(`${prefixCls}`, className, {

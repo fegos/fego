@@ -2,12 +2,15 @@
  * 图标组件
  * @author esky
  */
-import React from 'react'
-import './font'
+import React from 'react';
+import './font';
+
 export default function Icon(props) {
-  const { name, className = '', spin, size, width, height, hrefPrefix = 'nsicon', style, ...rest } = props;
+  const {
+    name, className = '', spin, size, width, height, hrefPrefix = 'nsicon', style, ...rest
+  } = props;
   const cls = `${className} nsicon ${spin || name === 'loading' ? 'nsicon-spin' : ''}`.trim();
-  let _style = { ...style, width: size || width, height: size || height };
+  const _style = { ...style, width: size || width, height: size || height };
   /**
   <!-- REACT JSX: -->
   <svg> <use xlinkHref='/svg/svg-sprite#my-icon' /> </svg>

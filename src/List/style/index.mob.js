@@ -1,1 +1,1 @@
-import './index.mob.less'; 
+import './index.mob.less';

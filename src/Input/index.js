@@ -30,7 +30,7 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
-    let val = this.refs['input'].value;
+    const val = this.refs['input'].value;
     const { showClear } = this.props;
     // 更新清除图标是否显示的状态
     showClear && this.setState({
@@ -39,14 +39,14 @@ export default class Input extends Component {
   }
 
   onChange = (e) => {
-    let val = this.refs['input'].value,
-      { onChange, value, showClear } = this.props;
+    const val = this.refs['input'].value;
+    const { onChange, value, showClear } = this.props;
 
     if (value === undefined) { // 非受控
       // 更新清除图标是否显示的状态
       showClear && this.setState({
-        showClearIcon: !!val
-      })
+        showClearIcon: !!val,
+      });
     }
     onChange instanceof Function && onChange(val);
   }
@@ -68,11 +68,11 @@ export default class Input extends Component {
 
     if (disabled) return;
     if (value === undefined) {
-      this.refs['input'].value = '' // 清空输入框
+      this.refs['input'].value = ''; // 清空输入框
       // 更新清除图标是否显示的状态
       showClear && this.setState({
-        showClearIcon: false
-      })
+        showClearIcon: false,
+      });
     }
     this.refs['input'].focus();
     onChange instanceof Function && onChange('');
@@ -87,7 +87,9 @@ export default class Input extends Component {
       otherProps.defaultValue && delete otherProps.defaultValue;
     }
     const ipt = (
-      <input ref="input" type="text"
+      <input
+        ref="input"
+        type="text"
         {...otherProps}
         disabled={disabled}
         className={classNames(`${prefixCls}`, className, {

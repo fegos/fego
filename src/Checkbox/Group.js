@@ -75,16 +75,13 @@ export default class CheckboxGroup extends Component {
     return (
       <div className={classNames(`${prefixCls}`, className)} style={style}>{
         children ? (
-          React.Children.map(children, (child) => {
-            return React.cloneElement(child, {
+          React.Children.map(children, child => React.cloneElement(child, {
               name,
               checked: this.state.valueArr.indexOf(child.props.value) >= 0,
               onChange: this.onChange,
-            });
-          })
+            }))
         ) : (
-            options.map((opt) => {
-              return (
+            options.map(opt => (
                 <Checkbox
                   key={opt.value}
                   value={opt.value}
@@ -95,8 +92,7 @@ export default class CheckboxGroup extends Component {
                 >
                   {opt.label}
                 </Checkbox>
-              );
-            })
+              ))
           )
       }
       </div>

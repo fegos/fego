@@ -1,1 +1,1 @@
-export { default } from './List.mob'
+export { default } from './List.mob';
