@@ -28,8 +28,8 @@ export default class Input extends Component {
     }
   }
 
-  componentDidMount() {
-    const val = this.refs['input'].value;
+  componentWillMount() {
+    const val = this.inputRef.value;
     const { showClear } = this.props;
     // 更新清除图标是否显示的状态
     showClear && this.setState({
@@ -37,8 +37,8 @@ export default class Input extends Component {
     });
   }
 
-  onChange = (e) => {
-    const val = this.refs['input'].value;
+  onChange = () => {
+    const val = this.inputRef.value;
     const { onChange, value, showClear } = this.props;
 
     if (value === undefined) { // 非受控
@@ -60,7 +60,7 @@ export default class Input extends Component {
     }
   }
 
-  onTouchStart = (e) => {
+  onTouchStart = () => {
     if (this.state.clearIconClicked) return;
     if (this.props.disabled) return;
     this.setState({
@@ -68,19 +68,19 @@ export default class Input extends Component {
     });
   }
 
-  onTouchEnd = (e) => {
+  onTouchEnd = () => {
     this.setState({
       clearIconClicked: false,
     });
     const { value, onChange, showClear } = this.props;
     if (value === undefined) {
-      this.refs['input'].value = ''; // 清空输入框
+      this.inputRef.value = ''; // 清空输入框
       // 更新清除图标是否显示的状态
       showClear && this.setState({
         showClearIcon: false,
       });
     }
-    this.refs['input'].focus();
+    this.inputRef.focus();
     onChange instanceof Function && onChange('');
   }
 
@@ -94,7 +94,7 @@ export default class Input extends Component {
     }
     const ipt = (
       <input
-        ref="input"
+        ref={(i) => { this.inputRef = i; }}
         type="text"
         {...otherProps}
         disabled={disabled}

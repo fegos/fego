@@ -134,7 +134,7 @@ export default class Pagination extends Component {
   }
 
   getInputPage() {
-    const value = this.refs['input'].value;
+    const { value } = this.inputRef;
     const page = parseInt(value, 10);
     const { totalPage } = this.state;
 
@@ -150,7 +150,7 @@ export default class Pagination extends Component {
       if (page) {
         this.onPageChange(page);
       }
-      this.refs['input'].value = '';
+      this.inputRef.value = '';
     }
   }
 
@@ -259,7 +259,7 @@ export default class Pagination extends Component {
         jumperEl = (
           <div className={`${prefix}-jumper`}>
             <span>{jumperText}</span>
-            <input type="text" ref="input" onKeyUp={this.onJumperIptKeyUp} />
+            <input type="text" ref={(i) => { this.inputRef = i; }} onKeyUp={this.onJumperIptKeyUp} />
           </div>
         );
       }
@@ -330,16 +330,16 @@ export default class Pagination extends Component {
     }
 
     if (front) {
-      pageArr.push(<li title="1" className={`${prefixCls}-item`} tabIndex="0" key={1} onClick={this.onPageChange.bind(this, 1)}><a>{1}</a></li>);
-      pageArr.push(<li title="向前5页" className={`${prefixCls}-jump-prev`} tabIndex="0" key="prev5" onClick={this.onPrevFiveClick}><a></a></li>);
+      pageArr.push(<li title="1" className={`${prefixCls}-item`} key={1} onClick={() => { this.onPageChange(1); }}><a>{1}</a></li>);
+      pageArr.push(<li title="向前5页" className={`${prefixCls}-jump-prev`} key="prev5" onClick={this.onPrevFiveClick} />);
     }
     for (let i = start; i <= end; i++) {
       itemClass = classNames(`${prefixCls}-item`, i === curPage ? `${prefixCls}-item-active` : '');
-      pageArr.push(<li title={`${i}`} className={itemClass} tabIndex="0" key={i} onClick={this.onPageChange.bind(this, i)}><a>{i}</a></li>);
+      pageArr.push(<li title={`${i}`} className={itemClass} key={i} onClick={() => { this.onPageChange(i); }}><a>{i}</a></li>);
     }
     if (tail) {
-      pageArr.push(<li title="向后5页" className={`${prefixCls}-jump-next`} tabIndex="0" key="next5" onClick={this.onNextFiveClick}><a></a></li>);
-      pageArr.push(<li title={`${totalPage}`} className={`${prefixCls}-item`} tabIndex="0" key={totalPage} onClick={this.onPageChange.bind(this, totalPage)}><a>{totalPage}</a></li>);
+      pageArr.push(<li title="向后5页" className={`${prefixCls}-jump-next`} key="next5" onClick={this.onNextFiveClick} />);
+      pageArr.push(<li title={`${totalPage}`} className={`${prefixCls}-item`} key={totalPage} onClick={() => { this.onPageChange(totalPage); }}><a>{totalPage}</a></li>);
     }
 
     return (
@@ -355,7 +355,7 @@ export default class Pagination extends Component {
         <li
           title="上一页"
           className={classNames(`${prefixCls}-prev`, {
-            [`${prefixCls}-prev-disabled`]: totalPage === 0 || curPage === 1
+            [`${prefixCls}-prev-disabled`]: totalPage === 0 || curPage === 1,
           })}
           onClick={this.onPrevOneClick}
         >
@@ -365,7 +365,7 @@ export default class Pagination extends Component {
         <li
           title="下一页"
           className={classNames(`${prefixCls}-next`, {
-            [`${prefixCls}-next-disabled`]: totalPage === 0 || curPage === totalPage
+            [`${prefixCls}-next-disabled`]: totalPage === 0 || curPage === totalPage,
           })}
           onClick={this.onNextOneClick}
         >

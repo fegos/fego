@@ -36,12 +36,14 @@ export default class Dialog extends React.Component {
         this.openTime = Date.now();
         this.lastOutSideFocusNode = document.activeElement;
         this.addScrollingEffect();
-        this.refs.wrap.focus();
-        const dialogNode = ReactDOM.findDOMNode(this.refs.dialog);
+        this.wrapRef.focus();
+        const dialogNode = ReactDOM.findDOMNode(this.dialogRef);
         if (mousePosition) {
           const elOffset = offset(dialogNode);
-          tool.setTransformOrigin(dialogNode,
-            `${mousePosition.x - elOffset.left}px ${mousePosition.y - elOffset.top}px`);
+          tool.setTransformOrigin(
+            dialogNode,
+            `${mousePosition.x - elOffset.left}px ${mousePosition.y - elOffset.top}px`
+          );
         } else {
           tool.setTransformOrigin(dialogNode, '');
         }
@@ -64,8 +66,8 @@ export default class Dialog extends React.Component {
     }
   }
   onAnimateLeave = () => {
-    if (this.refs.wrap) {
-      this.refs.wrap.style.display = 'none';
+    if (this.wrapRef) {
+      this.wrapRef.style.display = 'none';
     }
     this.inTransition = false;
     this.removeScrollingEffect();
@@ -83,13 +85,12 @@ export default class Dialog extends React.Component {
     if (visible) {
       if (e.keyCode === KeyCode.TAB) {
         const { activeElement } = document;
-        const dialogRoot = this.refs.wrap;
-        const { sentinel } = this.refs;
+        const dialogRoot = this.wrapRef;
         if (e.shiftKey) {
           if (activeElement === dialogRoot) {
-            sentinel.focus();
+            this.sentinelRef.focus();
           }
-        } else if (activeElement === this.refs.sentinel) {
+        } else if (activeElement === this.sentinelRef) {
           dialogRoot.focus();
         }
       }
@@ -111,7 +112,7 @@ export default class Dialog extends React.Component {
     let _footer = footer;
     if (_footer) {
       _footer = (
-        <div className={`${prefixCls}-footer`} ref="footer">
+        <div className={`${prefixCls}-footer`} ref={(i) => { this.footerRef = i; }}>
           {_footer}
         </div>
       );
@@ -120,7 +121,7 @@ export default class Dialog extends React.Component {
     let header;
     if (title) {
       header = (
-        <div className={`${prefixCls}-header`} ref="header">
+        <div className={`${prefixCls}-header`} ref={(i) => { this.headerRef = i; }}>
           <div className={`${prefixCls}-title`} id={this.titleId}>
             {title}
           </div>
@@ -136,7 +137,7 @@ export default class Dialog extends React.Component {
           aria-label="Close"
           className={`${prefixCls}-close`}
         >
-          <Icon className={`${prefixCls}-close-x`} name='no' />
+          <Icon className={`${prefixCls}-close-x`} name="no" />
         </button>);
     }
 
@@ -146,7 +147,7 @@ export default class Dialog extends React.Component {
       <LazyRenderBox
         key="dialog-element"
         role="document"
-        ref="dialog"
+        ref={(i) => { this.dialogRef = i; }}
         style={_style}
         className={`${prefixCls} ${className || ''}`}
         visible={visible}
@@ -157,14 +158,14 @@ export default class Dialog extends React.Component {
           <div
             className={`${prefixCls}-body`}
             style={bodyStyle}
-            ref="body"
+            ref={(i) => { this.bodyRef = i; }}
             {...bodyProps}
           >
             {children}
           </div>
           {_footer}
         </div>
-        <div tabIndex={0} ref="sentinel" style={{ width: 0, height: 0, overflow: 'hidden' }}>
+        <div tabIndex={0} ref={(i) => { this.sentinelRef = i; }} style={{ width: 0, height: 0, overflow: 'hidden' }}>
           sentinel
         </div>
       </LazyRenderBox>
@@ -190,12 +191,8 @@ export default class Dialog extends React.Component {
     }
     return style;
   }
-  getWrapStyle = () => {
-    return { ...this.getZIndexStyle(), ...this.props.wrapStyle }
-  }
-  getMaskStyle = () => {
-    return { ...this.getZIndexStyle(), ...this.props.maskStyle }
-  }
+  getWrapStyle = () => ({ ...this.getZIndexStyle(), ...this.props.wrapStyle })
+  getMaskStyle = () => ({ ...this.getZIndexStyle(), ...this.props.maskStyle })
   getMaskElement = () => {
     const {
       mask, prefixCls, visible, maskProps,
@@ -246,7 +243,7 @@ export default class Dialog extends React.Component {
     }
     return _transitionName;
   }
-  getElement = part => this.refs[part]
+  // getElement = part => this.refs[part]
   setScrollbar = () => {
     if (this.bodyIsOverflowing && this.scrollbarWidth !== undefined) {
       document.body.style.paddingRight = `${this.scrollbarWidth}px`;
@@ -289,22 +286,24 @@ export default class Dialog extends React.Component {
     document.body.style.paddingRight = '';
   }
   adjustDialog = () => {
-    if (this.refs.wrap && this.scrollbarWidth !== undefined) {
+    if (this.wrapRef && this.scrollbarWidth !== undefined) {
       const modalIsOverflowing =
-        this.refs.wrap.scrollHeight > document.documentElement.clientHeight;
-      this.refs.wrap.style.paddingLeft =
+        this.wrapRef.scrollHeight > document.documentElement.clientHeight;
+      this.wrapRef.style.paddingLeft =
         `${!this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : ''}px`;
-      this.refs.wrap.style.paddingRight =
+      this.wrapRef.style.paddingRight =
         `${this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''}px`;
     }
   }
   resetAdjustments = () => {
-    if (this.refs.wrap) {
-      this.refs.wrap.style.paddingLeft = this.refs.wrap.style.paddingLeft = '';
+    if (this.wrapRef) {
+      this.wrapRef.style.paddingLeft = this.wrapRef.style.paddingLeft = '';
     }
   }
   render() {
-    const { title, prefixCls, maskClosable, visible, wrapClassName, wrapProps } = this.props;
+    const {
+      title, prefixCls, maskClosable, visible, wrapClassName, wrapProps,
+    } = this.props;
     const style = this.getWrapStyle();
     // clear hide display
     // and only set display after async anim, not here for hide
@@ -318,7 +317,7 @@ export default class Dialog extends React.Component {
           tabIndex={-1}
           onKeyDown={this.onKeyDown}
           className={`${prefixCls}-wrap ${wrapClassName || ''}`}
-          ref="wrap"
+          ref={(i) => { this.wrapRef = i; }}
           onClick={maskClosable ? this.onMaskClick : undefined}
           role="dialog"
           aria-labelledby={title ? this.titleId : null}

@@ -51,15 +51,15 @@ export default class Checkbox extends Component {
 
     if (!('checked' in this.props)) {
       this.setState({
-        checked: checked
-      })
+        checked,
+      });
     }
 
     onChange instanceof Function && onChange(e.nativeEvent);
   }
 
   renderLabel() {
-    let { prefixCls, label, children } = this.props;
+    const { prefixCls, label, children } = this.props;
 
     if (children) {
       return <span className={`${prefixCls}-label`}>{children}</span>;
@@ -75,7 +75,7 @@ export default class Checkbox extends Component {
     } = this.props;
 
     return (
-      <label className={classNames(`${prefixCls}-wrapper`, className)} style={style}>
+      <label htmlFor={otherProps.id} className={classNames(`${prefixCls}-wrapper`, className)} style={style}>
         <span className={classNames(`${prefixCls}`, {
           [`${prefixCls}-checked`]: this.state.checked,
           [`${prefixCls}-indeterminate`]: indeterminate,
@@ -84,7 +84,6 @@ export default class Checkbox extends Component {
         >
           <input
             type="checkbox"
-            ref="checkbox"
             {...otherProps}
             disabled={disabled}
             className={`${prefixCls}-ipt`}
@@ -97,7 +96,7 @@ export default class Checkbox extends Component {
         </span>
         {this.renderLabel()}
       </label>
-    )
+    );
   }
 }
 

@@ -75,6 +75,7 @@ export default class Radio extends Component {
 
     return (
       <label
+        htmlFor={otherProps.id}
         className={classNames(`${prefixCls}-wrapper`, className)}
         style={style}
       >
@@ -85,7 +86,7 @@ export default class Radio extends Component {
         >
           <input
             type="radio"
-            ref="radio"
+            ref={(i) => { this.radioRef = i; }}
             {...otherProps}
             disabled={disabled}
             className={`${prefixCls}-ipt`}

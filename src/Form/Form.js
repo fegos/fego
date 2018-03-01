@@ -7,9 +7,9 @@ import FormBtns from './FormBtns';
 export default class Form extends Component {
   static create = function (Comp, options = {}) {
     class WrappedComp extends Form {
-      constructor(props) {
-        super(props);
-      }
+      // constructor(props) {
+      //   super(props);
+      // }
       getFieldsValue = (fields = []) => {
         console.log('create function getFieldsValue, ');
       }

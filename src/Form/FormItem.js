@@ -71,7 +71,7 @@ export default class FormItem extends Component {
     }
     const { rules } = this.props;
     if (rules) {
-      return rules.filter(rule => rule.required).length > 0
+      return rules.filter(rule => rule.required).length > 0;
     }
 
     return false;
@@ -162,30 +162,26 @@ export default class FormItem extends Component {
   renderChildren() {
     const { children, name } = this.props;
     const { value } = this.state;
-    const _children = React.Children.map(children, (child) => {
-      // if (child && typeof child.type === 'function' && !child.props.size) {
-      //   return React.cloneElement(child, { size: 'large' });
-      // }
-      // 给控件指定id,达到点击 label 控件能获得焦点的效果
-      return React.cloneElement(child, {
-        value,
-        id: name,
-        onChange: (val) => {
-          // 允许控件自己监听 onChange 事件
-          child.props.onChange instanceof Function && child.props.onChange(val);
-          this.onChange(val);
-        },
-      });
-    });
+
+    const _children = React.Children.map(children, child => React.cloneElement(child, {
+      value,
+      id: name, // 给控件指定id,达到点击 label 控件能获得焦点的效果
+      onChange: (val) => {
+        // 允许控件自己监听 onChange 事件
+        child.props.onChange instanceof Function && child.props.onChange(val);
+        this.onChange(val);
+      },
+    }));
     return [
       this.renderLabel(),
-      this.renderWrapper(
-        this.renderValidateWrapper(
-          _children,
-          // this.renderHelp(),
-          // this.renderExtra(),
-        ),
-      ),
+      // this.renderWrapper(
+      //   this.renderValidateWrapper(
+      //     _children,
+      //     // this.renderHelp(),
+      //     // this.renderExtra(),
+      //   ),
+      // ),
+      this.renderWrapper(this.renderValidateWrapper(_children)),
     ];
   }
   render() {

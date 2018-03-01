@@ -157,14 +157,14 @@ export default class ListItem extends Component {
 
     this.setState(_state);
   }
-  onTouchCancel = (e) => {
+  onTouchCancel = () => {
     this.setState({
       clicked: false,
       moving: false,
       left: 0,
     });
   }
-  handleSlipTouchEnd = (e) => {
+  handleSlipTouchEnd = () => {
     const { onSlipItemClick } = this.props;
 
     onSlipItemClick instanceof Function && onSlipItemClick();

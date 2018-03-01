@@ -1,28 +1,39 @@
 {
-	"env": {
-		"commonjs": {
-			"presets": [
-				"react",
-				["env", {
-					"targets": {
-						"browsers": ["ie >= 9", "safari >= 9", "firefox >= 40", "chrome >= 40"]
-					},
-					"loose": true,
-					"modules": "commonjs",
-					"useBuiltIns": "entry"
-				}],
-				"stage-1"
-			]
-		},
-		"es": {
-			"presets": [
-				"react",
-				["env", {
-					"loose": true,
-					"modules": false
-				}],
-				"stage-1"
-			]
-		}
-	}
+  "env": {
+    "commonjs": {
+      "presets": [
+        "react",
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 9",
+                "safari >= 9",
+                "firefox >= 40",
+                "chrome >= 40"
+              ]
+            },
+            "loose": true,
+            "modules": "commonjs",
+            "useBuiltIns": "entry"
+          }
+        ],
+        "stage-1"
+      ]
+    },
+    "es": {
+      "presets": [
+        "react",
+        [
+          "env",
+          {
+            "loose": true,
+            "modules": false
+          }
+        ],
+        "stage-1"
+      ]
+    }
+  }
 }

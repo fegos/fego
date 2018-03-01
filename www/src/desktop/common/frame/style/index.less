@@ -4,121 +4,121 @@
 
 // 适用于PC站点，页面定宽
 .g-ctn {
-    width: 1190px;
-    margin: 0 auto;
+  width: 1190px;
+  margin: 0 auto;
 }
 
 // 移动端满屏
 @media screen and (max-width: 1000px) {
-    .g-ctn {
-        width: auto;
-    }
+  .g-ctn {
+    width: auto;
+  }
 }
 
 body {
-	height: 100%;
+  height: 100%;
 }
 #app{
-	height: 100%;
-	.app{
-		height: 100%;
-	}
-	.main{
-		min-height: 100%;
-		box-sizing: border-box;
-		padding-top: @headerHeight;
-		margin-top: 0-@headerHeight;
-		padding-bottom: @footerHeight;
-		margin-bottom: 0-@footerHeight;
-		position: relative;
-		&:after {
-			content: '';
-			position: absolute;
-			top: @headerHeight;
-			bottom: @footerHeight;
-			left: @asideWidth;
-			width: 1px;
-			border-left: 1px solid #e9e9e9;
-		}
-	}
+  height: 100%;
+  .app{
+    height: 100%;
+  }
+  .main{
+    min-height: 100%;
+    box-sizing: border-box;
+    padding-top: @headerHeight;
+    margin-top: 0-@headerHeight;
+    padding-bottom: @footerHeight;
+    margin-bottom: 0-@footerHeight;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: @headerHeight;
+      bottom: @footerHeight;
+      left: @asideWidth;
+      width: 1px;
+      border-left: 1px solid #e9e9e9;
+    }
+  }
 }
 #header {
-	position: relative;
-	z-index: 1000;
-	height: @headerHeight;
-	background: #231f1f;
-	font-size: 14px;
-	color: #eee;
-	a {
-		text-decoration: none;
-		color: #eee;
-	}
-	.m-logo {
-		padding: 10px;
-		font-size: 26px;
-		line-height: @headerHeight;
-	}
+  position: relative;
+  z-index: 1000;
+  height: @headerHeight;
+  background: #231f1f;
+  font-size: 14px;
+  color: #eee;
+  a {
+    text-decoration: none;
+    color: #eee;
+  }
+  .m-logo {
+    padding: 10px;
+    font-size: 26px;
+    line-height: @headerHeight;
+  }
 }
 
 #footer {
-	// height: 50px;
-	// width: 100%;
-	border-top: 1px solid #eee;
-	.m-infomation{
-		height: @footerHeight;
-		line-height: @footerHeight;
-		font-size: 14px;
-		.m-links{
-			margin-bottom: 19px;
-			.item{
-				display: inline-block;
-				padding-right: 14px;
-				margin-right: 12px;
-				&.pipe{
-					border-right: 1px solid #979797;
-				}
-				a{
-					display: inline-block;
-					width: 100%;
-					height: 100%;
-					color: #9b9b9b;
-				}
-			}
-		}
-		.copyright{
-			color: #676767;
-		}
-	}
+  // height: 50px;
+  // width: 100%;
+  border-top: 1px solid #eee;
+  .m-infomation{
+    height: @footerHeight;
+    line-height: @footerHeight;
+    font-size: 14px;
+    .m-links{
+      margin-bottom: 19px;
+      .item{
+        display: inline-block;
+        padding-right: 14px;
+        margin-right: 12px;
+        &.pipe{
+          border-right: 1px solid #979797;
+        }
+        a{
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          color: #9b9b9b;
+        }
+      }
+    }
+    .copyright{
+      color: #676767;
+    }
+  }
 }
 #page{
 }
 
 .main {
-	& > ul {
-		float: left;
-		width: @asideWidth;
-		text-align: left;
-		padding: 13px 0;
-		li {
-			background-color: #fff;
-			transition: all .3s ease-in-out;
-			height: 42px;
-			line-height: 42px;
-			font-size: 12px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			a {
-				display: block;
-				padding-left: 30px;
-			}
-			&:hover {
-				background-color: rgba(168, 134, 77, .2);
-			}
-		}
-	}
-	& > .page {
-		overflow: auto;
-		margin-left: @asideWidth;
-		padding: 20px 40px;
-	}
+  & > ul {
+    float: left;
+    width: @asideWidth;
+    text-align: left;
+    padding: 13px 0;
+    li {
+      background-color: #fff;
+      transition: all .3s ease-in-out;
+      height: 42px;
+      line-height: 42px;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      a {
+        display: block;
+        padding-left: 30px;
+      }
+      &:hover {
+        background-color: rgba(168, 134, 77, .2);
+      }
+    }
+  }
+  & > .page {
+    overflow: auto;
+    margin-left: @asideWidth;
+    padding: 20px 40px;
+  }
 }

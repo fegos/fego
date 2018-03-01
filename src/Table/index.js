@@ -177,8 +177,11 @@ export default class Table extends Component {
         const next = level + 1;
         col.children.forEach((cc) => {
           const d = deepTraverse(cc, next);
-          deep = d > deep ? d : deep; // 更新最大深度
+          if (d > 0) {
+            deep = d > deep ? d : deep; // 更新最大深度
+          }
         });
+        return -1;
       } else {
         arr.push(col);
         return level;
@@ -305,7 +308,7 @@ export default class Table extends Component {
 
     // 处理 getCheckboxProps
     if (!rowSelection.getCheckboxProps) {
-      rowSelection.getCheckboxProps = function (record) {
+      rowSelection.getCheckboxProps = function () {
         return {
           disabled: false,
         };
@@ -361,7 +364,7 @@ export default class Table extends Component {
           className={`${prefixCls}-selection-${rowSelection.type}`}
           name={`${prefixCls}-selection`}
           {...checkboxPropsObj}
-          onChange={this.onSelectRowChange.bind(this, record)}
+          onChange={(e) => { this.onSelectRowChange(e, record); }}
           checked={this.state.selectedRowKeys.indexOf(rowKey) >= 0}
         />
       </td>
@@ -455,14 +458,14 @@ export default class Table extends Component {
           className={classNames(`${prefixCls}-column-sorter-ascend`, {
             on: isUpActive,
           })}
-          onClick={this.onSorterClick.bind(this, 'ascend', col)}
+          onClick={() => { this.onSorterClick('ascend', col); }}
         />
         <span
           title="↓"
           className={classNames(`${prefixCls}-column-sorter-descend`, {
             on: isDownActive,
           })}
-          onClick={this.onSorterClick.bind(this, 'descend', col)}
+          onClick={() => { this.onSorterClick('descend', col); }}
         />
       </div>
     );

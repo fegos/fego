@@ -68,16 +68,16 @@ export default class Select extends Component {
     document.removeEventListener('click', this.listenDocClick);
   }
 
-  listenDocClick = (e) => {
+  listenDocClick = () => {
     if (this.props.disabled) return;
     if (this.innerItemClick) {
       this.innerItemClick = false;
       return;
     }
     /**
-     * document.activeElement !== this.refs.select 为 true 表明页面发生了点击，并且点击的不是自己
+     * document.activeElement !== this.selectRef 为 true 表明页面发生了点击，并且点击的不是自己
      */
-    if (document.activeElement !== this.refs.select) {
+    if (document.activeElement !== this.selectRef) {
       const { onBlur } = this.props;
       const { expand, focused } = this.state;
 
@@ -94,7 +94,7 @@ export default class Select extends Component {
     }
   }
 
-  onShowDropdown = (e) => {
+  onShowDropdown = () => {
     if (this.props.disabled) return;
 
     const { expand } = this.state;
@@ -209,7 +209,7 @@ export default class Select extends Component {
         e.nativeEvent.preventDefault();
         e.nativeEvent.stopPropagation();
       } else {
-        const { menu } = this.refs;
+        const menu = this.menuRef;
         menu && menu.onKeyDown(e); // 把键盘事件传递给 menu 自己处理
         e.nativeEvent.preventDefault();
         e.nativeEvent.stopPropagation();
@@ -242,16 +242,16 @@ export default class Select extends Component {
         })}
         style={style}
       >
-        <div ref="select"
+        <div
+          ref={(i) => { this.selectRef = i; }}
           className={classNames(`${prefixCls}-selection`, {
             [`${prefixCls}-selection-multiple`]: multiple,
             [`${prefixCls}-selection-value`]: value,
           })}
           onClick={this.onShowDropdown}
-          aria-haspopup={true}
+          aria-haspopup
           aria-expanded={expand}
           aria-autocomplete="list"
-          tabIndex={0}
           onKeyDown={this.onKeyDown}
         >
           <div className={`${prefixCls}-selection-inner f-cb`}>
@@ -282,7 +282,8 @@ export default class Select extends Component {
           [`${prefixCls}-dropdown-fadeout`]: menuTrans,
         })}
         >
-          <DropdownMenu ref="menu"
+          <DropdownMenu
+            ref={(i) => { this.menuRef = i; }}
             show={expand}
             onChange={this.onChange}
             selectedValue={value}

@@ -73,19 +73,19 @@ export default class TextArea extends Component {
 
   resizeTextarea = () => {
     const { autoSize } = this.props;
-    if (!autoSize || !this.refs['textarea']) {
+    if (!autoSize || !this.textareaRef) {
       return;
     }
     const minRows = autoSize instanceof Object ? autoSize.minRows : null;
     const maxRows = autoSize instanceof Object ? autoSize.maxRows : null;
 
-    const textareaStyles = calculateNodeHeight(this.refs['textarea'], false, minRows, maxRows);
+    const textareaStyles = calculateNodeHeight(this.textareaRef, false, minRows, maxRows);
 
     this.setState({ textareaStyles });
   }
 
-  onChange = (e) => {
-    const val = this.refs['textarea'].value;
+  onChange = () => {
+    const val = this.textareaRef.value;
     const { onChange, value } = this.props;
 
     if (value === undefined) {
@@ -119,7 +119,7 @@ export default class TextArea extends Component {
 
     return (
       <textarea
-        ref="textarea"
+        ref={(i) => { this.textareaRef = i; }}
         type="textarea"
         {...otherProps}
         style={styles}
