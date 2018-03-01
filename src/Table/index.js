@@ -26,6 +26,8 @@ export default class Table extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-table']),
     // 表格列的配置描述
     columns: PropTypes.arrayOf(PropTypes.object),
     // 表格主体内容
@@ -528,26 +530,26 @@ export default class Table extends Component {
       <thead>
         {
           this.dimen2ColumnHeaderArr.map((arr, i) => (
-              <tr key={i}>
-                {/* 分组表头只放一个checkbox */}
-                {(rowSelection && i === 0) ? this.renderSelection('th') : null}
-                {
-                  arr.map((c, j) => (
-                      // 表头有分组时，包含分组的表头可能没有 dataIndex 和 key, 所以加了个 i-j 的 key 值供 react 使用
-                      <th
-                        key={c.key || c.dataIndex || `${i}-${j}`}
-                        colSpan={c[`${prefixCls}-col-span`]}
-                        rowSpan={c[`${prefixCls}-row-span`]}
-                        className={classNames(c.className, {
-                          [`${prefixCls}-column-sort`]: columnKey !== undefined && (c.key === columnKey || c.dataIndex === columnKey),
-                        })}
-                      >
-                        <span>{c.title}{this.renderSorter(c)}</span>
-                      </th>
-                    ))
-                }
-              </tr>
-            ))
+            <tr key={i}>
+              {/* 分组表头只放一个checkbox */}
+              {(rowSelection && i === 0) ? this.renderSelection('th') : null}
+              {
+                arr.map((c, j) => (
+                  // 表头有分组时，包含分组的表头可能没有 dataIndex 和 key, 所以加了个 i-j 的 key 值供 react 使用
+                  <th
+                    key={c.key || c.dataIndex || `${i}-${j}`}
+                    colSpan={c[`${prefixCls}-col-span`]}
+                    rowSpan={c[`${prefixCls}-row-span`]}
+                    className={classNames(c.className, {
+                      [`${prefixCls}-column-sort`]: columnKey !== undefined && (c.key === columnKey || c.dataIndex === columnKey),
+                    })}
+                  >
+                    <span>{c.title}{this.renderSorter(c)}</span>
+                  </th>
+                ))
+              }
+            </tr>
+          ))
         }
       </thead>
     );

@@ -212,14 +212,14 @@ export default class ListItem extends Component {
               {children}
             </div>
           ) : (
-              <div className={classNames(`${prefixCls}-title`, {
-                [`${prefixCls}-title-nowrap`]: !wrap,
-              })}
-              >
-                {title}
-                {subTitle ? <div className={`${prefixCls}-sub-title`}>{subTitle}</div> : null}
-              </div>
-            )}
+            <div className={classNames(`${prefixCls}-title`, {
+              [`${prefixCls}-title-nowrap`]: !wrap,
+            })}
+            >
+              {title}
+              {subTitle ? <div className={`${prefixCls}-sub-title`}>{subTitle}</div> : null}
+            </div>
+          )}
           {(extra !== undefined) ? <div className={`${prefixCls}-extra`}>{extra}</div> : null}
           {hasRightArrow ? <div className={`${prefixCls}-arrow`}><Icon name="right-arrow" /></div> : null}
         </div>

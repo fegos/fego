@@ -124,26 +124,6 @@ export default class Pagination extends Component {
     this.setState(_state);
   }
 
-  handlePageSizeOptions(options) {
-    const { pageSizeOptionFormat } = this.props;
-    this.pageSizeOptions = [];
-    this.pageSizeOptions = options.map(opt => ({
-      value: typeof opt === 'number' ? opt.toString() : opt,
-      label: pageSizeOptionFormat.replace(/^\${pageSize}/, opt),
-    }));
-  }
-
-  getInputPage() {
-    const { value } = this.inputRef;
-    const page = parseInt(value, 10);
-    const { totalPage } = this.state;
-
-    if (/^\s*$/.test(value) || /\D/g.test(value) || page < 1) {
-      return 0;
-    }
-    return page > totalPage ? totalPage : page;
-  }
-
   onJumperIptKeyUp = (e) => {
     if (e.nativeEvent.keyCode === KeyCode.ENTER) {
       const page = this.getInputPage();
@@ -219,6 +199,26 @@ export default class Pagination extends Component {
 
   onNextFiveClick = () => {
     this.onNext(5);
+  }
+
+  getInputPage() {
+    const { value } = this.inputRef;
+    const page = parseInt(value, 10);
+    const { totalPage } = this.state;
+
+    if (/^\s*$/.test(value) || /\D/g.test(value) || page < 1) {
+      return 0;
+    }
+    return page > totalPage ? totalPage : page;
+  }
+
+  handlePageSizeOptions(options) {
+    const { pageSizeOptionFormat } = this.props;
+    this.pageSizeOptions = [];
+    this.pageSizeOptions = options.map(opt => ({
+      value: typeof opt === 'number' ? opt.toString() : opt,
+      label: pageSizeOptionFormat.replace(/^\${pageSize}/, opt),
+    }));
   }
 
   /**
@@ -330,16 +330,16 @@ export default class Pagination extends Component {
     }
 
     if (front) {
-      pageArr.push(<li title="1" className={`${prefixCls}-item`} key={1} onClick={() => { this.onPageChange(1); }}><a>{1}</a></li>);
+      pageArr.push(<li title="1" className={`${prefixCls}-item`} key={1} onClick={() => { this.onPageChange(1); }}><span>{1}</span></li>);
       pageArr.push(<li title="向前5页" className={`${prefixCls}-jump-prev`} key="prev5" onClick={this.onPrevFiveClick} />);
     }
     for (let i = start; i <= end; i++) {
       itemClass = classNames(`${prefixCls}-item`, i === curPage ? `${prefixCls}-item-active` : '');
-      pageArr.push(<li title={`${i}`} className={itemClass} key={i} onClick={() => { this.onPageChange(i); }}><a>{i}</a></li>);
+      pageArr.push(<li title={`${i}`} className={itemClass} key={i} onClick={() => { this.onPageChange(i); }}><span>{i}</span></li>);
     }
     if (tail) {
       pageArr.push(<li title="向后5页" className={`${prefixCls}-jump-next`} key="next5" onClick={this.onNextFiveClick} />);
-      pageArr.push(<li title={`${totalPage}`} className={`${prefixCls}-item`} key={totalPage} onClick={() => { this.onPageChange(totalPage); }}><a>{totalPage}</a></li>);
+      pageArr.push(<li title={`${totalPage}`} className={`${prefixCls}-item`} key={totalPage} onClick={() => { this.onPageChange(totalPage); }}><span>{totalPage}</span></li>);
     }
 
     return (
@@ -359,7 +359,7 @@ export default class Pagination extends Component {
           })}
           onClick={this.onPrevOneClick}
         >
-          <a>&lt;</a>
+          <span>&lt;</span>
         </li>
         {pageArr}
         <li
@@ -369,7 +369,7 @@ export default class Pagination extends Component {
           })}
           onClick={this.onNextOneClick}
         >
-          <a>&gt;</a>
+          <span>&gt;</span>
         </li>
         {this.renderOptions()}
       </ul>

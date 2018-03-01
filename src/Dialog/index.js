@@ -33,9 +33,9 @@ export default class Dialog extends React.Component {
       <Button key="cancel" onClick={this.handleCancel}>
         {cancelText}
       </Button>), (
-      <Button key="confirm" type="primary" loading={confirmLoading} onClick={this.handleOk}>
-        {okText}
-      </Button>)] : footer;
+        <Button key="confirm" type="primary" loading={confirmLoading} onClick={this.handleOk}>
+          {okText}
+        </Button>)] : footer;
 
     return (
       <BaseDialog

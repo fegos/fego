@@ -13,8 +13,9 @@ export default class Input extends Component {
      * showClear 为 false, 则 showClearIcon 一定为初始默认值 false
      * showClear 为 true, 则 showClearIcon 的值根据输入框内容决定，有内容，则为 true，否则为 false
      */
+    const initialValue = props.value === undefined ? props.defaultValue : props.value;
     this.state = {
-      showClearIcon: false,
+      showClearIcon: props.showClear && (!!initialValue),
       clearIconClicked: false,
     };
   }
@@ -26,15 +27,6 @@ export default class Input extends Component {
         showClearIcon: !!nextProps.value,
       });
     }
-  }
-
-  componentWillMount() {
-    const val = this.inputRef.value;
-    const { showClear } = this.props;
-    // 更新清除图标是否显示的状态
-    showClear && this.setState({
-      showClearIcon: !!val,
-    });
   }
 
   onChange = () => {

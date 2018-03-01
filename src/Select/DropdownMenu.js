@@ -36,28 +36,6 @@ export default class DropdownMenu extends Component {
   //   }
   // }
 
-  getActiveValue(props) {
-    this.menuItems = this.getMenuItems(props);
-
-    const { selectedValue } = props;
-    // 有选中的值，则 active 态的项为选中的项，否则为第一个非 disabled 的项
-    return selectedValue || (this.menuItems.filter(m => !m.disabled)[0].value || '');
-  }
-
-  getMenuItems(props) {
-    const { children } = props;
-    const arr = [];
-    React.Children.forEach(children, (child, index) => {
-      arr.push({
-        value: child.props.value,
-        label: child.props.children,
-        disabled: child.props.disabled,
-        index,
-      });
-    });
-    return arr;
-  }
-
   onKeyDown = (e) => {
     const { keyCode } = e.nativeEvent;
     const { activeValue } = this.state;
@@ -79,6 +57,13 @@ export default class DropdownMenu extends Component {
     }
   }
 
+  onChange = (selectedValue, selectedLabel) => {
+    this.setState({
+      activeValue: selectedValue,
+    });
+    this.props.onChange(selectedValue, selectedLabel);
+  }
+
   getNextActiveValue(keyCode) {
     const { activeValue } = this.state;
     const activeItem = this.menuItems.filter(m => m.value === activeValue)[0];
@@ -98,11 +83,26 @@ export default class DropdownMenu extends Component {
     return nextActiveValue;
   }
 
-  onChange = (selectedValue, selectedLabel) => {
-    this.setState({
-      activeValue: selectedValue,
+  getMenuItems(props) {
+    const { children } = props;
+    const arr = [];
+    React.Children.forEach(children, (child, index) => {
+      arr.push({
+        value: child.props.value,
+        label: child.props.children,
+        disabled: child.props.disabled,
+        index,
+      });
     });
-    this.props.onChange(selectedValue, selectedLabel);
+    return arr;
+  }
+
+  getActiveValue(props) {
+    this.menuItems = this.getMenuItems(props);
+
+    const { selectedValue } = props;
+    // 有选中的值，则 active 态的项为选中的项，否则为第一个非 disabled 的项
+    return selectedValue || (this.menuItems.filter(m => !m.disabled)[0].value || '');
   }
 
   render() {

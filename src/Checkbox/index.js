@@ -11,6 +11,8 @@ export default class Checkbox extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-checkbox']),
     // checkbox label 文案
     label: PropTypes.string,
     // checkbox label 文案，使用则 labe 属性失效

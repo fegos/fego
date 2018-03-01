@@ -12,6 +12,8 @@ export default class CheckboxGroup extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-checkbox-group']),
     // checkboxGroup 下所有 input[type="checkbox"] 的 name 属性
     name: PropTypes.string.isRequired,
     // 受控属性，当前选中的值
@@ -42,19 +44,6 @@ export default class CheckboxGroup extends Component {
     }
   }
 
-  updateValueArr(value, checked) {
-    const { valueArr } = this.state;
-
-    if (checked) {
-      valueArr.push(value);
-    } else {
-      const index = valueArr.indexOf(value);
-      valueArr.splice(index, 1);
-    }
-
-    return valueArr;
-  }
-
   onChange = (e) => {
     const { value, checked } = e.target;
     const { onChange } = this.props;
@@ -68,6 +57,19 @@ export default class CheckboxGroup extends Component {
     onChange instanceof Function && onChange(valueArr);
   }
 
+  updateValueArr(value, checked) {
+    const { valueArr } = this.state;
+
+    if (checked) {
+      valueArr.push(value);
+    } else {
+      const index = valueArr.indexOf(value);
+      valueArr.splice(index, 1);
+    }
+
+    return valueArr;
+  }
+
   render() {
     const {
       prefixCls, className, style, name, children, options,
@@ -76,24 +78,24 @@ export default class CheckboxGroup extends Component {
       <div className={classNames(`${prefixCls}`, className)} style={style}>{
         children ? (
           React.Children.map(children, child => React.cloneElement(child, {
-              name,
-              checked: this.state.valueArr.indexOf(child.props.value) >= 0,
-              onChange: this.onChange,
-            }))
+            name,
+            checked: this.state.valueArr.indexOf(child.props.value) >= 0,
+            onChange: this.onChange,
+          }))
         ) : (
-            options.map(opt => (
-                <Checkbox
-                  key={opt.value}
-                  value={opt.value}
-                  name={name}
-                  checked={this.state.valueArr.indexOf(opt.value) >= 0}
-                  onChange={this.onChange}
-                  disabled={opt.disabled}
-                >
-                  {opt.label}
-                </Checkbox>
-              ))
-          )
+          options.map(opt => (
+            <Checkbox
+              key={opt.value}
+              value={opt.value}
+              name={name}
+              checked={this.state.valueArr.indexOf(opt.value) >= 0}
+              onChange={this.onChange}
+              disabled={opt.disabled}
+            >
+              {opt.label}
+            </Checkbox>
+          ))
+        )
       }
       </div>
     );

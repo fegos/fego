@@ -8,8 +8,16 @@ export default class FormBtns extends Component {
     displayName: 'FormBtns',
   }
   static propTypes = {
+    prefixCls: PropTypes.oneOf(['ns-form-btns']),
+    displayName: PropTypes.oneOf(['FormBtns']),
     formLayout: PropTypes.string,
     itemLayout: PropTypes.string,
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
   }
   render() {
     const {

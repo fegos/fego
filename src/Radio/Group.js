@@ -10,6 +10,8 @@ export default class RadioGroup extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-radio-group']),
     // RadioGroup 下所有 input[type="radio"] 的 name 属性
     name: PropTypes.string.isRequired,
     // 受控属性，当前选中的值
@@ -41,7 +43,7 @@ export default class RadioGroup extends Component {
   }
 
   onChange = (e) => {
-    const { value } = e.target.value;
+    const { value } = e.target;
     const { onChange } = this.props;
     if (!('value' in this.props)) {
       this.setState({
@@ -58,8 +60,7 @@ export default class RadioGroup extends Component {
     } = this.props;
     return (
       <div className={classNames(`${prefixCls}`, className)} style={style}>
-      {
-        children ? (
+        {children ? (
           React.Children.map(children, child => React.cloneElement(child, {
             name,
             checked: child.props.value === this.state.value,
@@ -78,8 +79,7 @@ export default class RadioGroup extends Component {
               {opt.label}
             </Radio>
           ))
-        )
-      }
+        )}
       </div>
     );
   }

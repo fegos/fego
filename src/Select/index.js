@@ -19,6 +19,8 @@ export default class Select extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-select']),
     // 选择框大小
     size: PropTypes.oneOf(['default', 'large', 'small']),
     // 受控属性，当前选中的项，需配合 onChange 使用
@@ -51,6 +53,10 @@ export default class Select extends Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('click', this.listenDocClick);
+  }
+
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps && nextProps.value !== this.props.value) {
       this.setState({
@@ -59,39 +65,9 @@ export default class Select extends Component {
     }
   }
 
-  componentDidMount() {
-    document.addEventListener('click', this.listenDocClick);
-  }
-
   componentWillUnmount() {
     if (this.timer) clearTimeout(this.timer);
     document.removeEventListener('click', this.listenDocClick);
-  }
-
-  listenDocClick = () => {
-    if (this.props.disabled) return;
-    if (this.innerItemClick) {
-      this.innerItemClick = false;
-      return;
-    }
-    /**
-     * document.activeElement !== this.selectRef 为 true 表明页面发生了点击，并且点击的不是自己
-     */
-    if (document.activeElement !== this.selectRef) {
-      const { onBlur } = this.props;
-      const { expand, focused } = this.state;
-
-      if (expand) { // 当前展开，则应该收起下拉，并失焦
-        this.hideDropDown({
-          focused: false,
-        });
-      } else if (focused) { // 当前收起，有焦点，直接失焦即可
-        this.setState({
-          focused: false,
-        });
-        onBlur instanceof Function && onBlur();
-      }
-    }
   }
 
   onShowDropdown = () => {
@@ -121,41 +97,6 @@ export default class Select extends Component {
     this.hideDropDown(_state);
   }
 
-  showDropDown = () => {
-    const { onFocus } = this.props;
-    const { focused } = this.state;
-    this.setState({
-      expand: true,
-      focused: true,
-      menuHide: false,
-      // menuTrans: false,
-    });
-    !focused && onFocus instanceof Function && onFocus();
-  }
-
-  hideDropDown = (otherState = {}) => {
-    if (this.timer) clearTimeout(this.timer);
-
-    this.setState({
-      ...otherState,
-      expand: false, // 告诉整个组件，下拉菜单要关闭了
-      menuHide: false, // 显示关闭动画，300ms 再后隐藏
-      menuTrans: true,
-    });
-
-    if ('focused' in otherState && !otherState.focused) {
-      const { onBlur } = this.props;
-      onBlur instanceof Function && onBlur();
-    }
-
-    this.timer = setTimeout(() => {
-      this.setState({
-        menuHide: true,
-        menuTrans: false,
-      });
-    }, 300);
-  }
-
   onClear = (e) => {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation(); // 阻止点击事件冒泡
@@ -174,19 +115,6 @@ export default class Select extends Component {
     } else {
       this.setState(_state);
     }
-  }
-
-  getLabel() {
-    const { value } = this.state;
-    if (!value) return null;
-
-    let label = '';
-    React.Children.forEach(this.props.children, (child) => {
-      if (child.props.value === value) {
-        label = child.props.children;
-      }
-    });
-    return label;
   }
 
   onKeyDown = (e) => {
@@ -217,6 +145,80 @@ export default class Select extends Component {
     } else if (keyCode === KeyCode.ENTER || keyCode === KeyCode.DOWN) { // 当前没展开，则可以通过键盘展开菜单
       this.showDropDown();
       e.nativeEvent.preventDefault();
+    }
+  }
+
+  getLabel() {
+    const { value } = this.state;
+    if (!value) return null;
+
+    let label = '';
+    React.Children.forEach(this.props.children, (child) => {
+      if (child.props.value === value) {
+        label = child.props.children;
+      }
+    });
+    return label;
+  }
+
+  hideDropDown = (otherState = {}) => {
+    if (this.timer) clearTimeout(this.timer);
+
+    this.setState({
+      ...otherState,
+      expand: false, // 告诉整个组件，下拉菜单要关闭了
+      menuHide: false, // 显示关闭动画，300ms 再后隐藏
+      menuTrans: true,
+    });
+
+    if ('focused' in otherState && !otherState.focused) {
+      const { onBlur } = this.props;
+      onBlur instanceof Function && onBlur();
+    }
+
+    this.timer = setTimeout(() => {
+      this.setState({
+        menuHide: true,
+        menuTrans: false,
+      });
+    }, 300);
+  }
+
+  showDropDown = () => {
+    const { onFocus } = this.props;
+    const { focused } = this.state;
+    !focused && onFocus instanceof Function && onFocus();
+    this.setState({
+      expand: true,
+      focused: true,
+      menuHide: false,
+      // menuTrans: false,
+    });
+  }
+
+  listenDocClick = () => {
+    if (this.props.disabled) return;
+    if (this.innerItemClick) {
+      this.innerItemClick = false;
+      return;
+    }
+    /**
+     * document.activeElement !== this.selectRef 为 true 表明页面发生了点击，并且点击的不是自己
+     */
+    if (document.activeElement !== this.selectRef) {
+      const { onBlur } = this.props;
+      const { expand, focused } = this.state;
+
+      if (expand) { // 当前展开，则应该收起下拉，并失焦
+        this.hideDropDown({
+          focused: false,
+        });
+      } else if (focused) { // 当前收起，有焦点，直接失焦即可
+        this.setState({
+          focused: false,
+        });
+        onBlur instanceof Function && onBlur();
+      }
     }
   }
 
@@ -258,8 +260,8 @@ export default class Select extends Component {
             {value ? (
               <span className={`${prefixCls}-selection-selected-value`} >{label}</span>
             ) : (
-                <span className={`${prefixCls}-selection-placeholder`}>{placeholder}</span>
-              )}
+              <span className={`${prefixCls}-selection-placeholder`}>{placeholder}</span>
+            )}
           </div>
           {(showClear && value) ? (
             <span

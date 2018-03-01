@@ -32,6 +32,8 @@ export default class TextArea extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-input']),
     // 默认值，非受控属性
     defaultValue: PropTypes.string,
     // 受控属性 value
@@ -58,6 +60,10 @@ export default class TextArea extends Component {
     };
   }
 
+  componentDidMount() {
+    this.resizeTextarea();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== undefined && nextProps.value !== this.props.value) {
       if (this.nextFrameActionId) {
@@ -65,23 +71,6 @@ export default class TextArea extends Component {
       }
       this.nextFrameActionId = onNextFrame(this.resizeTextarea);
     }
-  }
-
-  componentDidMount() {
-    this.resizeTextarea();
-  }
-
-  resizeTextarea = () => {
-    const { autoSize } = this.props;
-    if (!autoSize || !this.textareaRef) {
-      return;
-    }
-    const minRows = autoSize instanceof Object ? autoSize.minRows : null;
-    const maxRows = autoSize instanceof Object ? autoSize.maxRows : null;
-
-    const textareaStyles = calculateNodeHeight(this.textareaRef, false, minRows, maxRows);
-
-    this.setState({ textareaStyles });
   }
 
   onChange = () => {
@@ -102,6 +91,19 @@ export default class TextArea extends Component {
     if (onKeyDown instanceof Function) {
       onKeyDown(e.nativeEvent);
     }
+  }
+
+  resizeTextarea = () => {
+    const { autoSize } = this.props;
+    if (!autoSize || !this.textareaRef) {
+      return;
+    }
+    const minRows = autoSize instanceof Object ? autoSize.minRows : null;
+    const maxRows = autoSize instanceof Object ? autoSize.maxRows : null;
+
+    const textareaStyles = calculateNodeHeight(this.textareaRef, false, minRows, maxRows);
+
+    this.setState({ textareaStyles });
   }
 
   render() {

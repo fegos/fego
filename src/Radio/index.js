@@ -10,6 +10,8 @@ export default class Radio extends Component {
   }
 
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-radio']),
     // radio label 文案
     label: PropTypes.string,
     // radio label 文案，使用则 labe 属性失效

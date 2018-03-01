@@ -11,6 +11,12 @@ export default class FormItem extends Component {
     horizontal: true,
   }
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-form-item']),
+    // 在Form.js里使用，用于区分不同的子元素
+    displayName: PropTypes.oneOf(['FormItem']),
+    // 表单项值发生变化时的回调
+    onFieldsChange: PropTypes.func,
     // 表单域唯一标识
     name: PropTypes.string,
     // 是否为必填项, 若不设置，会从 rules 中提取
@@ -64,6 +70,10 @@ export default class FormItem extends Component {
       });
     }
   }
+  onChange(val) {
+    const { onFieldsChange, name } = this.props;
+    onFieldsChange(name, val);
+  }
   isRequired() {
     const { required } = this.props;
     if (required !== undefined) {
@@ -75,10 +85,6 @@ export default class FormItem extends Component {
     }
 
     return false;
-  }
-  onChange(val) {
-    const { onFieldsChange, name } = this.props;
-    onFieldsChange(name, val);
   }
   /**
    * 渲染 label 标签

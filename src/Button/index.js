@@ -12,16 +12,6 @@ export default class Button extends React.Component {
       loading: props.loading,
     };
   }
-  handleClick = (e) => {
-    if (this.state.clicked) return;
-    this.setState({ clicked: true });
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.setState({ clicked: false }), 300);
-    const { onClick } = this.props;
-    if (onClick) {
-      onClick(e);
-    }
-  }
   componentWillReceiveProps(nextProps) {
     const currentLoading = this.props.loading;
     const { loading } = nextProps;
@@ -37,6 +27,16 @@ export default class Button extends React.Component {
   componentWillUnmount() {
     this.timeout && clearTimeout(this.timeout);
     this.delayTimeout && clearTimeout(this.delayTimeout);
+  }
+  handleClick = (e) => {
+    if (this.state.clicked) return;
+    this.setState({ clicked: true });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => this.setState({ clicked: false }), 300);
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick(e);
+    }
   }
   render() {
     const {

@@ -7,6 +7,20 @@ class Agent extends Component {
   state = {
     visible: true,
   }
+  onCancel = (e) => {
+    const { onCancel } = this.props;
+    if (onCancel instanceof Function) {
+      onCancel(e);
+    }
+    this.close();
+  }
+  onOk = (e) => {
+    const { onOk } = this.props;
+    if (onOk instanceof Function) {
+      onOk(e);
+    }
+    this.close();
+  }
   close() {
     this.setState({
       visible: false,
@@ -22,20 +36,6 @@ class Agent extends Component {
         }
       }, 300);
     });
-  }
-  onCancel = (e) => {
-    const { onCancel } = this.props;
-    if (onCancel instanceof Function) {
-      onCancel(e);
-    }
-    this.close();
-  }
-  onOk = (e) => {
-    const { onOk } = this.props;
-    if (onOk instanceof Function) {
-      onOk(e);
-    }
-    this.close();
   }
   render() {
     const {

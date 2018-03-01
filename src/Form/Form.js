@@ -41,6 +41,8 @@ export default class Form extends Component {
     onReset: () => { },
   }
   static propTypes = {
+    // 前缀
+    prefixCls: PropTypes.oneOf(['ns-form']),
     /**
      * 表单整体布局方式
      * vertical: 垂直排列
@@ -73,17 +75,6 @@ export default class Form extends Component {
     };
     this.initialValue = values;
   }
-  getInitialValues(props) {
-    const { children } = props;
-    const values = {};
-    React.Children.forEach(children, (child) => {
-      const childProps = child.props;
-      if (childProps.displayName === 'FormItem') {
-        values[childProps.name] = childProps.initialValue;
-      }
-    });
-    return values;
-  }
   onSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state.curValue);
@@ -102,6 +93,17 @@ export default class Form extends Component {
     this.setState({
       curValue: newValue,
     });
+  }
+  getInitialValues(props) {
+    const { children } = props;
+    const values = {};
+    React.Children.forEach(children, (child) => {
+      const childProps = child.props;
+      if (childProps.displayName === 'FormItem') {
+        values[childProps.name] = childProps.initialValue;
+      }
+    });
+    return values;
   }
   render() {
     const {
@@ -134,6 +136,7 @@ export default class Form extends Component {
                 itemLayout,
               });
             }
+            return null;
           })
         }
       </form>

@@ -1,44 +1,44 @@
 @import './base';
 
 .@{btn-prefix} {
-	// PC 有 hover focus 等效果
-	.btn-default-pseudo;
-	&-primary {
-		.button-primary-pseudo(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-	}
-	&-danger {
-		.button-danger-pseudo(@btn-primary-color; @btn-danger-color; @btn-danger-color);
-	}
-	&-ghost {
-		.button-ghost-pseudo(@btn-ghost-color; @btn-ghost-border;);
-	}
-	&:focus>span,
+  // PC 有 hover focus 等效果
+  .btn-default-pseudo;
+  &-primary {
+    .button-primary-pseudo(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  }
+  &-danger {
+    .button-danger-pseudo(@btn-primary-color; @btn-danger-color; @btn-danger-color);
+  }
+  &-ghost {
+    .button-ghost-pseudo(@btn-ghost-color; @btn-ghost-border;);
+  }
+  &:focus>span,
     &:active>span {
         position: relative;
-	}
-	// 点击效果
-	&-clicked:after {
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        bottom: -1px;
-        right: -1px;
-        border-radius: inherit;
-        border: 0 solid @primary-color;
-        opacity: 0.4;
-        animation: buttonEffect .4s;
-        display: block;
-    }
+  }
+  // 点击效果
+  &-clicked:after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    border-radius: inherit;
+    border: 0 solid @primary-color;
+    opacity: 0.4;
+    animation: buttonEffect .4s;
+    display: block;
+  }
 }
 
 @keyframes buttonEffect {
-    to {
-        opacity: 0;
-        top: -6px;
-        left: -6px;
-        bottom: -6px;
-        right: -6px;
-        border-width: 6px;
-    }
+  to {
+    opacity: 0;
+    top: -6px;
+    left: -6px;
+    bottom: -6px;
+    right: -6px;
+    border-width: 6px;
+  }
 }

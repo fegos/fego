@@ -12,6 +12,12 @@ export default class Button extends React.Component {
       loading: props.loading,
     };
   }
+  componentWillReceiveProps(nextProps) {
+    const { loading } = nextProps;
+    if (typeof loading === 'boolean' && this.props.oading !== loading) {
+      this.setState({ loading });
+    }
+  }
   handleTouchStart = () => {
     if (this.props.disabled) return;
     if (this.state.clicked) return;
@@ -22,12 +28,6 @@ export default class Button extends React.Component {
     const { onClick } = this.props;
     if (onClick) {
       onClick(e);
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    const { loading } = nextProps;
-    if (typeof loading === 'boolean' && this.props.oading !== loading) {
-      this.setState({ loading });
     }
   }
   render() {
