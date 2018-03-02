@@ -1,14 +1,14 @@
 @import "./base.less";
 
 .@{checkbox-prefix}-wrapper {
-	// 移动端点击后，eg:选中状态，点击切换至不选中状态
-	// 点击后会出现 checkbox 有 hover 态时的样式
-	// 所以把 hover 样式拆出来
-	&:hover {
-		.@{checkbox-prefix}:not(.@{checkbox-prefix}-disabled) {
-			.@{checkbox-prefix}-inner {
-				border-color: @primary-color;
-			}
-		}
-	}
+  // 移动端点击后，eg:选中状态，点击切换至不选中状态
+  // 点击后会出现 checkbox 有 hover 态时的样式
+  // 所以把 hover 样式拆出来
+  &:hover {
+    .@{checkbox-prefix}:not(.@{checkbox-prefix}-disabled) {
+      .@{checkbox-prefix}-inner {
+        border-color: @primary-color;
+      }
+    }
+  }
 }

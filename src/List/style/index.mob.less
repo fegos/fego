@@ -4,131 +4,131 @@
 @list-item-height: 32px;
 
 .@{list-prefix} {
-	border-bottom: @border-width-base @border-style-base @border-color-split;
-	border-top: @border-width-base @border-style-base @border-color-split;
-	line-height: @line-height-base;
-	&-item {
-		position: relative;
-		/**
-		 * item 设置 padding-left, 使 item 的 子元素 item-inner 能画出距离左边一定边距的 border-bottom
-		 * 同时高亮的背景色 -clicked:after 能充满整个 item
-		 */
-		padding-left: 15px;
-		background: #fff;
-		color: @text-color;
-		overflow: hidden;
-		display: block; // 当渲染成链接是默认渲染成 a 标签，所以需设置成 block
-		// 移动端禁止长按选择文本
-		-webkit-touch-callout:none;
-		-webkit-user-select:none;
-		-khtml-user-select:none;
-		-moz-user-select:none;
-		-ms-user-select:none;
-		user-select:none;
-		// 去掉移动端触摸事件默认背景色
-		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);  
-		-moz-tap-highlight-color:rgba(0, 0, 0, 0);  
-		-ms-tap-highlight-color:rgba(0, 0, 0, 0);  
-		-o-tap-highlight-color:rgba(0, 0, 0, 0);  
-		tap-highlight-color:rgba(0, 0, 0, 0);
-		&-inner {
-			padding: 15px 0;
-			display: flex;
-			align-items: center; // 默认垂直居中
-		}
-		&:not(:last-child) {
-			.@{list-prefix}-item-inner {
-				border-bottom: @border-width-base @border-style-base @border-color-split;
-			}
-		}
-		&-align-top {
-			align-items: flex-start;
-		}
-		&-align-bottom {
-			align-items: flex-end;
-		}
-		&-slip {
-			/**
-			 * 有左滑操作的 item，
-			 * 设置 relative 是为了设置 z-index 以遮挡左滑删除
-			 * 设置 background 也是为了配合 z-index 遮挡左滑删除
-			 */
-			.@{list-prefix}-item-inner {
-				position: relative;
-				z-index: 2;
-				background: #fff;
-			}
-		}
-		&-del {
-			position: absolute;
-			z-index: 1;
-			right: 0;
-			top: 0;
-			height: 100%;
-			text-align: center;
-			background: @highlight-color;
-			color: #fff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			line-height: 1;
-		}
-		&-clicked:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			/**
-			 * 当有左滑的时候，item-inner 是设置了 background 以遮挡左滑的，
-			 * 所以需要点击的背景色 z-index 在有左滑时能层级高于左滑时 item-inner 的背景
-			 */
-			z-index: 3;
-			background: @shadow-color;
-			opacity: 0.4;
-			display: block;
-		}
-	}
-	&-title {
-		flex: 1;
-		margin-right: 10px;
-		text-align: left;
-		width: auto;
-		word-wrap: break-word;
-		word-break: break-all;
-		&-nowrap {
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-	}
-	&-sub-title {
-		color: @text-color-secondary;
-		margin-top: 5px;
-	}
-	&-extra,
-	&-arrow,
-	&-icon {
-		flex: 0;
-		margin-right: 10px;
-	}
-	&-arrow,
-	&-icon {
-		// 让 icon, arrow 能居中
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		.nsicon {
-			// list item 目前设置的 line-height 为 1.5, 此处先将 icon 的 height 手动做同样处理
-			height: @line-height-base * 1em;
-		}
-	}
-	&-extra {
-		flex-basis: 30%;
-		text-align: right;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
+  border-bottom: @border-width-base @border-style-base @border-color-split;
+  border-top: @border-width-base @border-style-base @border-color-split;
+  line-height: @line-height-base;
+  &-item {
+    position: relative;
+    /**
+     * item 设置 padding-left, 使 item 的 子元素 item-inner 能画出距离左边一定边距的 border-bottom
+     * 同时高亮的背景色 -clicked:after 能充满整个 item
+     */
+    padding-left: 15px;
+    background: #fff;
+    color: @text-color;
+    overflow: hidden;
+    display: block; // 当渲染成链接是默认渲染成 a 标签，所以需设置成 block
+    // 移动端禁止长按选择文本
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    // 去掉移动端触摸事件默认背景色
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color:rgba(0, 0, 0, 0);
+    -ms-tap-highlight-color:rgba(0, 0, 0, 0);
+    -o-tap-highlight-color:rgba(0, 0, 0, 0);
+    tap-highlight-color:rgba(0, 0, 0, 0);
+    &-inner {
+      padding: 15px 0;
+      display: flex;
+      align-items: center; // 默认垂直居中
+    }
+    &:not(:last-child) {
+      .@{list-prefix}-item-inner {
+        border-bottom: @border-width-base @border-style-base @border-color-split;
+      }
+    }
+    &-align-top {
+      align-items: flex-start;
+    }
+    &-align-bottom {
+      align-items: flex-end;
+    }
+    &-slip {
+      /**
+       * 有左滑操作的 item，
+       * 设置 relative 是为了设置 z-index 以遮挡左滑删除
+       * 设置 background 也是为了配合 z-index 遮挡左滑删除
+       */
+      .@{list-prefix}-item-inner {
+        position: relative;
+        z-index: 2;
+        background: #fff;
+      }
+    }
+    &-del {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      top: 0;
+      height: 100%;
+      text-align: center;
+      background: @highlight-color;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
+    }
+    &-clicked:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      /**
+       * 当有左滑的时候，item-inner 是设置了 background 以遮挡左滑的，
+       * 所以需要点击的背景色 z-index 在有左滑时能层级高于左滑时 item-inner 的背景
+       */
+      z-index: 3;
+      background: @shadow-color;
+      opacity: 0.4;
+      display: block;
+    }
+  }
+  &-title {
+    flex: 1;
+    margin-right: 10px;
+    text-align: left;
+    width: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    &-nowrap {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  &-sub-title {
+    color: @text-color-secondary;
+    margin-top: 5px;
+  }
+  &-extra,
+  &-arrow,
+  &-icon {
+    flex: 0;
+    margin-right: 10px;
+  }
+  &-arrow,
+  &-icon {
+    // 让 icon, arrow 能居中
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .nsicon {
+      // list item 目前设置的 line-height 为 1.5, 此处先将 icon 的 height 手动做同样处理
+      height: @line-height-base * 1em;
+    }
+  }
+  &-extra {
+    flex-basis: 30%;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
