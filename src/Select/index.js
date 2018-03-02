@@ -254,6 +254,8 @@ export default class Select extends Component {
           aria-haspopup
           aria-expanded={expand}
           aria-autocomplete="list"
+          // 说明：这个必须加上，不然会有bug...
+          tabIndex={0}
           onKeyDown={this.onKeyDown}
         >
           <div className={`${prefixCls}-selection-inner f-cb`}>
