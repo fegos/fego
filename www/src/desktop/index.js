@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -26,28 +26,26 @@ const store = createStore(
   ),
 );
 
-class Container extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Frame>
-            <Router {...this.props} />
-          </Frame>
-        </ConnectedRouter>
-      </Provider>
-    );
-  }
+function Container(props) {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Frame>
+          <Router {...props} />
+        </Frame>
+      </ConnectedRouter>
+    </Provider>
+  );
 }
 
-let App = {
-  init: function () {
-    let { location } = history;
-    let curRoute = matchRoutes(routes, location.pathname)
+const App = {
+  init() {
+    const { location } = history;
+    const curRoute = matchRoutes(routes, location.pathname)
       .filter(route => route.match.isExact)
       .map(route => route.route)[0];
     if (curRoute && curRoute.loader) {
-      curRoute.loader(mod => {
+      curRoute.loader((mod) => {
         curRoute.component = mod.default ? mod.default : mod;
         delete curRoute.loader;
         this.render(curRoute);
@@ -56,7 +54,7 @@ let App = {
       this.render(curRoute);
     }
   },
-  render: function (route) {
+  render(route) {
     render(<Container routes={routes} initialRoute={route} />, document.getElementById('app'));
   },
 };

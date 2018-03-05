@@ -10,13 +10,13 @@ class Router extends Component {
       route: props.initialRoute,
     };
   }
+  componentDidMount() {
+    this.match(this.props.location);
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.location !== this.props.location) {
       this.match(nextProps.location);
     }
-  }
-  componentDidMount() {
-    this.match(this.props.location);
   }
   // match = (location) => {
   //   let curRoute = matchRoutes(this.routes, location.pathname)
@@ -58,10 +58,10 @@ class Router extends Component {
     // let { store } = this.props
     // Fetch.clear()
     // if (getInitialProps instanceof Function) {
-    // 	location = Object.assign({}, location, { query: searchToQuery(location.search) })
-    // 	getInitialProps(store.dispatch, store.getState(), location).then(res => {
-    // 		res !== false && this.updateSeo(curRoute.component, store.getState())
-    // 	}).catch(err => console.log(err))
+    //   location = Object.assign({}, location, { query: searchToQuery(location.search) })
+    //   getInitialProps(store.dispatch, store.getState(), location).then(res => {
+    //     res !== false && this.updateSeo(curRoute.component, store.getState())
+    //   }).catch(err => console.log(err))
     // }
     // this.updateSeo(curRoute.component, store.getState())
     this.setState({ route: curRoute });
