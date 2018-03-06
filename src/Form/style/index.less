@@ -82,7 +82,7 @@
       }
     }
     .@{form-prefix}-btns {
-      &-left-with-offset {
+      &-left-offset {
         margin-left: 25%;
       }
     }
@@ -102,19 +102,14 @@
         display: inline-block;
       }
       &-right {
-        &-hh,
-        &-hv {
-          float: right;
-          text-align: right;
-        }
-        &-hh {
-          .@{form-prefix}-btns {
-            margin: 2px 0 26px 0;
-          }
-        }
-        &-hv {
-          margin-top: 26px;
-        }
+        float: right;
+        text-align: right;
+      }
+      &-top-correct {
+        margin-top: 2px;
+      }
+      &-top-offset {
+        margin-top: 26px;
       }
     }
   }

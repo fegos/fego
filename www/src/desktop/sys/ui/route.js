@@ -16,6 +16,9 @@ export default [{
     path: '/ui/Radio',
     component: () => import('./Radio'),
   }, {
+    path: '/ui/Form',
+    component: () => import('./Form'),
+  }, {
     path: '/ui/Dialog',
     component: () => import('./Dialog'),
   }, {

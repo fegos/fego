@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class FormItem extends Component {
+  static displayName = 'FormItem'
   static defaultProps = {
     prefixCls: 'ns-form-item',
-    displayName: 'FormItem',
     colon: true,
     onFieldsChange: () => { },
-    horizontal: true,
+    horizontal: false,
   }
   static propTypes = {
     // 前缀
     prefixCls: PropTypes.oneOf(['ns-form-item']),
-    // 在Form.js里使用，用于区分不同的子元素
-    displayName: PropTypes.oneOf(['FormItem']),
     // 表单项值发生变化时的回调
     onFieldsChange: PropTypes.func,
     // 表单域唯一标识

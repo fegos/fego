@@ -1,32 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { create } from './api';
 import FormItem from './FormItem';
 import FormBtns from './FormBtns';
 
 export default class Form extends Component {
-  static create = function (Comp, options = {}) {
-    class WrappedComp extends Form {
-      // constructor(props) {
-      //   super(props);
-      // }
-      getFieldsValue = (fields = []) => {
-        console.log('create function getFieldsValue, ');
-      }
-      render() {
-        const form = {
-          // decorator: decorator
-          setFieldsValue: this.setFieldsValue,
-          getFieldsValue: this.getFieldsValue,
-          validateFields: this.validateFields,
-          resetFields: this.resetFields,
-          getFieldsError: this.getFieldsError,
-        };
-        return <Comp {...this.props} form={form} />;
-      }
-    }
-    return WrappedComp;
-  }
+  static create = create
   static defaultProps = {
     prefixCls: 'ns-form',
     // 表单整体布局方式
@@ -98,18 +78,21 @@ export default class Form extends Component {
     const { children } = props;
     const values = {};
     React.Children.forEach(children, (child) => {
-      const childProps = child.props;
-      if (childProps.displayName === 'FormItem') {
-        values[childProps.name] = childProps.initialValue;
+      const { props: _props, type } = child;
+      if (type.displayName === 'FormItem') {
+        values[_props.name] = _props.initialValue;
       }
     });
     return values;
+  }
+  getFieldsValue() {
+    console.log('调用Form的getFieldsValue函数')
+    return this.state.curValue;
   }
   render() {
     const {
       prefixCls, classNmae, style, children, layout, itemLayout, hideRequiredMark,
     } = this.props;
-
     return (
       <form
         className={classNames(`${prefixCls}`, classNmae, {
@@ -123,14 +106,15 @@ export default class Form extends Component {
         onReset={this.onReset}
       >{
           React.Children.map(children, (child) => {
-            const _props = child.props;
-            if (_props.displayName === 'FormItem') {
+            const { props: _props, type } = child;
+
+            if (type.displayName === 'FormItem') {
               return React.cloneElement(child, {
                 horizontal: itemLayout === 'horizontal',
                 onFieldsChange: this.onFieldsChange,
                 value: this.state.curValue[_props.name],
               });
-            } else if (_props.displayName === 'FormBtns') {
+            } else if (type.displayName === 'FormBtns') {
               return React.cloneElement(child, {
                 formLayout: layout,
                 itemLayout,
