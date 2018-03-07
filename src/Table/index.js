@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Pagination from '../Pagination';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
+import Loading from '../Loading';
 
 export default class Table extends Component {
   static defaultProps = {
@@ -642,53 +643,39 @@ export default class Table extends Component {
     const {
       prefixCls, className, style, showHeader, loading, pagination, title, footer,
     } = this.props;
-    const containerClasses = classNames(`${prefixCls}-container f-cb`, className);
+    const containerClasses = classNames(`${prefixCls}-container`, className);
     const { dataSource } = this.state;
 
     return (
       <div className={containerClasses} style={style}>
-        {/* loading */}
-        <div className={`${prefixCls}-loading`}>
-          {loading ? (
-            <div className="loading-icon">
-              <span className="bar bar-1" />
-              <span className="bar bar-2" />
-              <span className="bar bar-3" />
-            </div>
-          ) : null}
-          <div className={classNames({
-            [`${prefixCls}-loading-container`]: true,
-            'is-loading': loading,
+        <Loading loading={loading}>
+          <div className={classNames(`${prefixCls}`, {
+            [`${prefixCls}-with-title`]: (title instanceof Function),
+            [`${prefixCls}-without-title`]: !(title instanceof Function),
+            [`${prefixCls}-without-column-header`]: !showHeader,
+            [`${prefixCls}-empty`]: !dataSource.length,
           })}
           >
-            <div className={classNames(`${prefixCls}`, {
-              [`${prefixCls}-with-title`]: (title instanceof Function),
-              [`${prefixCls}-without-title`]: !(title instanceof Function),
-              [`${prefixCls}-without-column-header`]: !showHeader,
-              [`${prefixCls}-empty`]: !dataSource.length,
-            })}
-            >
-              {/* 头部标题 */}
-              {title instanceof Function ? <div className={`${prefixCls}-title`}>{title()}</div> : null}
-              {/* 表格主体 */}
-              <div>
-                <table>
-                  <colgroup>{this.colgroupArr}</colgroup>
-                  {/* 表头 */}
-                  {this.renderTHead()}
-                  {/* 主体 */}
-                  {this.renderTBody()}
-                  {/* 表尾 */}
-                  {this.renderTFoot()}
-                </table>
-              </div>
-              {/* 尾部标题 */}
-              {footer instanceof Function ? <div className={`${prefixCls}-footer`}>{footer()}</div> : null}
+            {/* 头部标题 */}
+            {title instanceof Function ? <div className={`${prefixCls}-title`}>{title()}</div> : null}
+            {/* 表格主体 */}
+            <div>
+              <table>
+                <colgroup>{this.colgroupArr}</colgroup>
+                {/* 表头 */}
+                {this.renderTHead()}
+                {/* 主体 */}
+                {this.renderTBody()}
+                {/* 表尾 */}
+                {this.renderTFoot()}
+              </table>
             </div>
-            {/* 分页 */}
-            {pagination === false ? null : this.renderPagination()}
+            {/* 尾部标题 */}
+            {footer instanceof Function ? <div className={`${prefixCls}-footer`}>{footer()}</div> : null}
           </div>
-        </div>
+          {/* 分页 */}
+          {pagination === false ? null : this.renderPagination()}
+        </Loading>
       </div>
     );
   }
