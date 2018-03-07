@@ -30,5 +30,8 @@ export default [{
   }, {
     path: '/ui/Pagination',
     component: () => import('./Pagination'),
+  }, {
+    path: '/ui/Loading',
+    component: () => import('./Loading'),
   }],
 }];
