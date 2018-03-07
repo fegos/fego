@@ -1,0 +1,97 @@
+@import "../../style/mixin/index";
+@loading-prefix: ~"@{prefix}-loading";
+
+
+@keyframes loading-bar {
+  0% {
+    transform: scaleY(1);
+  }
+  20% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: scaleY(1.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.@{loading-prefix} {
+  position: relative;
+  &-ctn {
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    text-align: center;
+    color: @primary-5;
+    z-index: 1;
+  }
+  &-icon {
+    .bar{
+      display: inline-block;
+      width: 5px;
+      height: 20px;
+      border-radius: 3px;
+      background: @primary-5;
+      animation: loading-bar 1s linear infinite;
+      margin: 0 3px;
+    }
+    .circle {
+      font-size: 18px;
+      color: @primary-5;
+    }
+    .bar-1 {
+    }
+    .bar-2 {
+      animation-delay: .2s;
+    }
+    .bar-3 {
+      animation-delay: .4s;
+    }
+  }
+  &-icon-sm {
+    .bar {
+      width: 3px;
+      height: 16px;
+      border-radius: 1px;
+    }
+    .circle {
+      font-size: 14px;
+    }
+  }
+  &-icon-lg {
+    .bar {
+      width: 7px;
+      height: 24px;
+      border-radius: 3px;
+    }
+    .circle {
+      font-size: 22px;
+    }
+  }
+  &-container {
+    transition: all .3s @ease-in-out;
+    &.is-loading {
+      // filter: blur(.5px); // 打开会造成小晃动，先关闭吧
+      opacity: .7;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: @disabled-color-dark;
+        opacity: .7;
+        transition: all .3s;
+        z-index: 10;
+      }
+    }
+  }
+}
