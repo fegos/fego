@@ -64,6 +64,7 @@ body {
   // height: 50px;
   // width: 100%;
   border-top: 1px solid #eee;
+  text-align: center;
   .m-infomation{
     height: @footerHeight;
     line-height: @footerHeight;
@@ -101,7 +102,7 @@ body {
     padding: 13px 0;
     li {
       background-color: #fff;
-      transition: all .3s ease-in-out;
+      transition: background-color .3s ease-in-out;
       height: 42px;
       line-height: 42px;
       font-size: 12px;
@@ -112,7 +113,14 @@ body {
         padding-left: 30px;
       }
       &:hover {
+        background-color: rgba(168, 134, 77, .1);
+      }
+      &.active {
         background-color: rgba(168, 134, 77, .2);
+        border-right: 2px solid #a8864d;
+        a {
+          color: #a8864d;
+        }
       }
     }
   }
