@@ -41,7 +41,7 @@ export default class Card extends React.Component {
     );
   }
   renderCover() {
-    const { prefixCls, cover } = this.props;
+    const { prefixCls, cover, title } = this.props;
     let imgEl = null;
     if (typeof cover === 'string') {
       imgEl = <img src={cover} alt="" />;
@@ -49,7 +49,10 @@ export default class Card extends React.Component {
       imgEl = cover;
     }
     return (
-      <div className={classNames(`${prefixCls}-cover`)}>
+      <div className={classNames(`${prefixCls}-cover`, {
+        [`${prefixCls}-cover-no-radius`]: title,
+      })}
+      >
         {imgEl}
       </div>
     );

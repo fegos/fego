@@ -18,10 +18,10 @@
   &-header,
   &-body,
   &-footer {
-    border-bottom: @border-width-base @border-style-base @border-color-split;
-  }
-  &:last-child{
-    border-bottom: none;
+    border-top: @border-width-base @border-style-base @border-color-split;
+    &:first-child{
+      border-top: none;
+    }
   }
   &-border {
     border: @border-width-base @border-style-base @border-color-base;
@@ -41,12 +41,23 @@
     }
   }
   &-cover {
+    & + .@{card-prefix}-body {
+      border-top: none;
+    }
     & > * {
       width: 100%;
       display: block;
     }
     & > img {
       vertical-align: middle;
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: @border-radius-base;
+    }
+    &-no-radius {
+      & > img {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
   }
   &-body {

@@ -17,7 +17,6 @@ export default class Home extends Component {
     return (
       <div className={style.page}>
         <a href="#">测试样式</a>
-        <Card />
         <Icon name="plus" style={{ fontSize: '14px', color: 'red', margin: 10 }} />
         <div className={style.hoverIcon}>
           <Icon name="no" size="28px" style={{ margin: 10 }} />

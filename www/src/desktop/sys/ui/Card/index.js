@@ -10,7 +10,7 @@ export default class Page extends Component {
         <div className="f-cb">
           <div className="section">
             <h3>简单卡片：</h3>
-            <Card title="card title">
+            <Card title="card title" hoverable={false}>
               <p>card content</p>
               <p>card content</p>
               <p>card content</p>
@@ -37,7 +37,16 @@ export default class Page extends Component {
 
           <div className="section">
             <h3>带封面的卡片：</h3>
-            <Card title="card title" cover="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521085830&di=298dc6ddf8ca5198a6ab2db61f1617e6&imgtype=jpg&er=1&src=http%3A%2F%2Fimgcache.tuwandata.com%2Fv2%2Fthumb%2Fall%2FZmIxYiw2MDAsMTAwLDQsMywxLC0xLDEsLCw5MA%3D%3D%2Fu%2Fwww.tuwan.com%2Fuploads%2Fallimg%2F1711%2F29%2F1323415915-0.jpg">
+            <Card cover="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520502215780&di=f78971db8261dbf8c758bd6f40626d93&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201705%2F27%2F9ed0aa2c7f1f02128b64247254da5bec.jpg">
+              <p>card content</p>
+              <p>card content</p>
+              <p>card content</p>
+            </Card>
+          </div>
+
+          <div className="section">
+            <h3>无边框的卡片：</h3>
+            <Card title="card title" border={false} cover="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520502681319&di=5a1905ec9c7b6f9fb109afffa51b7abb&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2Ff4f4c038324150f08d916f26ba09d1277cb61b2a.jpg">
               <p>card content</p>
               <p>card content</p>
               <p>card content</p>
