@@ -33,5 +33,8 @@ export default [{
   }, {
     path: '/ui/Loading',
     component: () => import('./Loading'),
+  }, {
+    path: '/ui/Card',
+    component: () => import('./Card'),
   }],
 }];

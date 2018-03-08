@@ -11,6 +11,7 @@ export default props => (
     <div className="main">
       <ul>
         <li><Link to="/ui/Button">按钮 Button</Link></li>
+        <li><Link to="/ui/Card">卡片 Card</Link></li>
         <li><Link to="/ui/Carousel">走马灯 Carousel</Link></li>
         <li><Link to="/ui/Checkbox">复选框 Checkbox</Link></li>
         <li><Link to="/ui/Dialog">对话框 Dialog</Link></li>

@@ -1,10 +1,10 @@
 let styleIgnore = [
-	'Fetch', 
-	'URL', 
-	'Verify', 
-	'Card', 
-	// 'Form', 
-	// 'Icon', 
+	'Fetch',
+	'URL',
+	'Verify',
+	// 'Card',
+	// 'Form',
+	// 'Icon',
 	'Menu'
 ];
 let merge = require('lodash/merge')
