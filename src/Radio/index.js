@@ -24,8 +24,6 @@ export default class Radio extends Component {
     defaultChecked: PropTypes.bool,
     // 是否禁用
     disabled: PropTypes.bool,
-    // radio 对应的值
-    value: PropTypes.any,
   }
 
   constructor(props) {

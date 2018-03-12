@@ -1,25 +1,25 @@
-# Pagination
+# 分页 Pagination
 
 ### 组件描述
-- 分页组件
+- 以分页的形式展示长列表数据，每次加载部分数据，以提高效率
 
 ### 示例代码
 
 ```js
-<Pagination showJumper total={248} size='small' /> 
-<Pagination showTotal showJumper total={248} size='large' /> 
+<Pagination showJumper total={248} size='small' />
+<Pagination showTotal showJumper total={248} size='large' />
 <Pagination showTotal showJumper showPageSizeChanger total={248} defaultPage={4} />
-<Pagination showTotal showJumper pageSize={20}       total={248} defaultPage={1} /> 
+<Pagination showTotal showJumper pageSize={20}       total={248} defaultPage={1} />
 <Pagination showJumper showPageSizeChanger total={248}
-	showTotal={(total, range, curPage, curPageSize)=>{
-		return `总共${total}条数据，当前显示${range[0]}-${range[1]}条数据`
-	}} 
-	page={this.state.page}
-	onChange={(curPage, curPageSize)=>{
-		this.setState({
-			page: curPage
-		})
-	}}/>
+  showTotal={(total, range, curPage, curPageSize)=>{
+    return `总共${total}条数据，当前显示${range[0]}-${range[1]}条数据`
+  }}
+  page={this.state.page}
+  onChange={(curPage, curPageSize)=>{
+    this.setState({
+      page: curPage
+    })
+  }}/>
 ```
 
 ## API

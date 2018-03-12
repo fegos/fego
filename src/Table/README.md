@@ -1,46 +1,24 @@
-# Table
+# 表格 Table
 
 ### 组件描述
-- 列表组件
+- 用于展示行列数据
+- 可以对数据进行排序、分页、等操作，以方便查看表格数据
+- 本组件只适用于web端，移动端不建议使用Table展示数据
 
 ### 示例代码
 
 ```js
 <Table columns={columns} dataSource={[]} />
 <Table columns={columns2} dataSource={this.state.dataSource} loading={this.state.loading} tfootData={{
-	name: '合计',
-	age: '200',
-	sex: 'lala',
-	company: 'aaa'
+  name: 'asy',
+  age: '20',
+  sex: 'female',
+  company: 'fego'
 }} pagination={{
-	total: 13,
-	page: this.state.page,
-	showTotal: (total, range) => `共${total}条数据，显示${range[0]}-${range[1]}条`
-}} onChange={(pagination, sorter, filters) => {
-	// // 模拟数据的变化
-	pagination.page === 1 ? this.setState({
-		dataSource: dataSource.slice(0, 10)
-	}) : this.setState({
-		dataSource: dataSource.slice(10, 13)
-	})
-	this.setState({
-		page: pagination.page
-	})
-	console.log('onChange: ',pagination, sorter, filters)
-}} rowSelection={{
-	// type: 'radio',
-	selectedRowKeys: this.state.selectedRowKeys,
-	getCheckboxProps: (record) => ({
-		disabled: record.index === 0
-	}),
-	onChange: (selectedRowKeys, selectedRows) => {
-		console.log('onChange', selectedRowKeys, selectedRows)
-		this.setState({
-			selectedRowKeys: selectedRowKeys
-		})},
-	onSelect: (selected, record, selectedRows) => {console.log('onSelect', selected, record, selectedRows)},
-	onSelectAll: (selected, selectedRows, changedRows) => {console.log('onSelectAll', selected, selectedRows, changedRows)},
-}}/>
+  total: 13,
+  page: this.state.page,
+  showTotal: (total, range) => `共${total}条数据，显示${range[0]}-${range[1]}条`
+}} onChange={(pagination, sorter, filters) => {}} />
 ```
 
 ## API
@@ -62,7 +40,7 @@
 | rowClassName | 表格行的类名 | string |  |
 | rowSelection | 列表项是否可选择 | object | null |
 | emptyText | 无数据时的提示文案 | string | 'Ops…暂无数据' |
-|  |  |  |  |
+
 
 ### columns
 
@@ -84,9 +62,9 @@
 + Pagination = false : 不显示分页条，展示全部数据
 + Pagination = true : 显示分页条，后台给全部数据，前端进行分页
 + Pagination = object : 显示分页条，由后端分页
-	+ 无 page 属性：使用非受控属性 defaultPage 
-	+ 有 page 属性：使用受控属性 page, 需搭配 onChange 使用
-	+ pageSize 同理
+  + 无 page 属性：使用非受控属性 defaultPage
+  + 有 page 属性：使用受控属性 page, 需搭配 onChange 使用
+  + pageSize 同理
 
 ### props列表
 具体见 Pagination 组件
@@ -101,4 +79,4 @@
 | onChange | 选中项发生变化的时的回调 | function(selectedRowKeys, selectedRows){} |  |
 | onSelect | 选择/取消选择某列的回调 | function(selected, record, selectedRows){} |  |
 | onSelectAll | 选择/取消选择所有列的回调 | function(selected, selectedRows, changedRows){} |  |
-| ogetCheckboxProps | 选择框的默认属性配置 | function(record){} |  |
+| getCheckboxProps | 选择框的默认属性配置 | function(record){} |  |
