@@ -34,7 +34,7 @@ export default class Page extends Component {
     return (
       <div className={style.page}>
         <div className="section">
-          <h3>单独使用的 Checkbox: </h3>
+          <p className="title">单独使用的 Checkbox: </p>
           <Checkbox defaultChecked onChange={(e) => { console.log(e.target.checked); }}>使用defaultChecked=true</Checkbox>
           <Checkbox defaultChecked={false} onChange={(e) => { console.log(e.target.checked); }}>使用defaultChecked=false</Checkbox>
           <Checkbox checked={this.state.checked1} onChange={(e) => { console.log(e.target.checked); this.setState({ checked1: e.target.checked }); }}>使用checked=true</Checkbox>
@@ -44,21 +44,21 @@ export default class Page extends Component {
         </div>
 
         <div className="section">
-          <h3>Checkbox.Group: </h3>
+          <p className="title">Checkbox.Group: </p>
           <Checkbox.Group name="cbox1" onChange={(v) => { console.log(v); }}>
             {opts2}
           </Checkbox.Group>
         </div>
 
         <div className="section">
-          <h3>Checkbox.Group, 使用非受控属性 defaultValue: </h3>
+          <p className="title">Checkbox.Group, 使用非受控属性 defaultValue: </p>
           <Checkbox.Group name="cbox2" defaultValue={['chi']} onChange={(v) => { console.log(v); }}>
             {opts2}
           </Checkbox.Group>
         </div>
 
         <div className="section">
-          <h3>Checkbox.Group, 使用受控属性 value: </h3>
+          <p className="title">Checkbox.Group, 使用受控属性 value: </p>
           <Checkbox.Group
             name="cbox3"
             value={this.state.checkboxGroupValue1}
@@ -74,7 +74,7 @@ export default class Page extends Component {
         </div>
 
         <div className="section">
-          <h3>Checkbox.Group, 以配置项形式设置子元素: </h3>
+          <p className="title">Checkbox.Group, 以配置项形式设置子元素: </p>
           <Checkbox.Group
             name="cbox4"
             options={opts}

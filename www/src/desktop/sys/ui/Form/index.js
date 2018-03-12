@@ -11,11 +11,11 @@ export default class Home extends Component {
     return (
       <div className={style.page}>
         <div className="section">
-          <h3>表单的布局方式：</h3>
+          <p className="title">表单的布局方式：</p>
           <BaseForm />
         </div>
         <div className="section">
-          <h3>使用 create 包装表单（未完成）：</h3>
+          <p className="title">使用 create 包装表单（未完成）：</p>
           <AdvanceForm />
         </div>
       </div>

@@ -15,19 +15,19 @@ export default class Page extends Component {
     return (
       <div className={style.page}>
         <div className="section">
-          <h3>基本分页器: </h3>
+          <p className="title">基本分页器: </p>
           <Pagination total={248} />
         </div>
         <div className="section">
-          <h3>展示总条数、跳转、分页大小: </h3>
+          <p className="title">展示总条数、跳转、分页大小: </p>
           <Pagination showTotal showJumper pageSize={20} total={248} defaultPage={1} />
         </div>
         <div className="section">
-          <h3>当前页使用非受控属性 defaultPage: </h3>
+          <p className="title">当前页使用非受控属性 defaultPage: </p>
           <Pagination showTotal showJumper showPageSizeChanger total={248} defaultPage={4} />
         </div>
         <div className="section">
-          <h3>当前页使用受控属性 page: </h3>
+          <p className="title">当前页使用受控属性 page: </p>
           <Pagination
             showTotal
             showJumper
@@ -42,7 +42,7 @@ export default class Page extends Component {
           />
         </div>
         <div className="section">
-          <h3>定制总条数的展示: </h3>
+          <p className="title">定制总条数的展示: </p>
           <Pagination
             showJumper
             showPageSizeChanger
@@ -53,13 +53,13 @@ export default class Page extends Component {
           />
         </div>
         <div className="section size">
-          <h3>分页器尺寸: </h3>
+          <p className="title">分页器尺寸: </p>
           <Pagination showTotal showJumper total={248} size="small" />
           <Pagination showTotal showJumper total={248} />
           <Pagination showTotal showJumper total={248} size="large" />
         </div>
         <div className="section">
-          <h3>总条数 total 的改变: </h3>
+          <p className="title">总条数 total 的改变: </p>
           <Button
             onClick={() => {
               this.setState({

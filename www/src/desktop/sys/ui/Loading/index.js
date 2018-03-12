@@ -18,25 +18,25 @@ export default class Page extends Component {
     return (
       <div className={style.page}>
         <div className="section">
-          <h3>柱状加载中状态：</h3>
+          <p className="title">柱状加载中状态：</p>
           <Loading loading >
             {ctn}
           </Loading>
         </div>
         <div className="section">
-          <h3>圆形加载中状态：</h3>
+          <p className="title">圆形加载中状态：</p>
           <Loading loading type="circle" >
             {ctn}
           </Loading>
         </div>
         <div className="section">
-          <h3>带自定义文案的加载中状态：</h3>
+          <p className="title">带自定义文案的加载中状态：</p>
           <Loading loading type="bar" tip="正在拼命加载，别催，再催砍人了！！" >
             {ctn}
           </Loading>
         </div>
         <div className="section size">
-          <h3>不同尺寸：</h3>
+          <p className="title">不同尺寸：</p>
           <Loading loading type="bar" size="small" />
           <Loading loading type="bar" />
           <Loading loading type="bar" size="large" />
@@ -45,7 +45,7 @@ export default class Page extends Component {
           <Loading loading type="circle" size="large" />
         </div>
         <div className="section">
-          <h3>带延迟：</h3>
+          <p className="title">带延迟：</p>
           <Button onClick={() => { this.setState({ loading: !this.state.loading }); }}>点击切换加载中状态</Button>
           <Loading delay={1000} loading={this.state.loading} >
             {ctn}

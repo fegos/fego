@@ -21,7 +21,7 @@ export default class Page extends Component {
     return (
       <div className={style.page}>
         <div className="section">
-          <h3>使用非受控属性 defaultValue 的下拉框: </h3>
+          <p className="title">使用非受控属性 defaultValue 的下拉框: </p>
           <Select
             showClear
             defaultValue="lucky"
@@ -32,7 +32,7 @@ export default class Page extends Component {
           </Select>
         </div>
         <div className="section">
-          <h3>使用受控属性 value 的下拉框: </h3>
+          <p className="title">使用受控属性 value 的下拉框: </p>
           <Select
             value={this.state.selectValue}
             onChange={(v) => { console.log('2 change', v); this.setState({ selectValue: v }); }}
@@ -42,17 +42,17 @@ export default class Page extends Component {
           </Select>
         </div>
         <div className="section">
-          <h3>无默认选中值的下拉框: </h3>
+          <p className="title">无默认选中值的下拉框: </p>
           <Select placeholder="placeholder">{opts}</Select>
         </div>
         <div className="section">
-          <h3>下拉框尺寸: </h3>
+          <p className="title">下拉框尺寸: </p>
           <Select size="small">{opts}</Select>
           <Select>{opts}</Select>
           <Select size="large">{opts}</Select>
         </div>
         <div className="section">
-          <h3>禁用的下拉框: </h3>
+          <p className="title">禁用的下拉框: </p>
           <Select disabled defaultValue="disabled">{opts}</Select>
         </div>
       </div>

@@ -35,7 +35,7 @@ export default class Page extends Component {
     return (
       <div className={style.page}>
         <div className="section">
-          <h3>单独使用的 Radio: </h3>
+          <p className="title">单独使用的 Radio: </p>
           <Radio defaultChecked onChange={(e) => { console.log(e.target.checked); }}>使用defaultChecked=true</Radio>
           <Radio value="1" defaultChecked={false} onChange={(e) => { console.log(e.target.checked, e.target.value); }}>使用defaultChecked=false</Radio>
           <Radio checked={this.state.radio1} onChange={(e) => { console.log(e.target.checked); this.setState({ radio1: e.target.checked }); }}>使用checked=true</Radio>
@@ -45,21 +45,21 @@ export default class Page extends Component {
         </div>
 
         <div className="section">
-          <h3>Radio.Group: </h3>
+          <p className="title">Radio.Group: </p>
           <Radio.Group name="course1" onChange={(value) => { console.log(value); }}>
             {opt}
           </Radio.Group>
         </div>
 
         <div className="section">
-          <h3>Radio.Group，使用非受控属性 defaultValue: </h3>
+          <p className="title">Radio.Group，使用非受控属性 defaultValue: </p>
           <Radio.Group name="course2" defaultValue="che" onChange={(value) => { console.log(value); }}>
             {opt}
           </Radio.Group>
         </div>
 
         <div className="section">
-          <h3>Radio.Group，使用受控属性 value: </h3>
+          <p className="title">Radio.Group，使用受控属性 value: </p>
           <Radio.Group
             name="course3"
             value={this.state.radioGroupValue1}
@@ -74,7 +74,7 @@ export default class Page extends Component {
         </div>
 
         <div className="section">
-          <h3>Radio.Group，以配置项形式设置子元素: </h3>
+          <p className="title">Radio.Group，以配置项形式设置子元素: </p>
           <Radio.Group
             name="course4"
             options={opt2}
