@@ -5,6 +5,9 @@ export default [{
     path: '/Button',
     component: () => import('./Button'),
   }, {
+    path: '/Card',
+    component: () => import('./Card'),
+  }, {
     path: '/Carousel',
     component: () => import('./Carousel'),
   }, {
@@ -22,6 +25,9 @@ export default [{
   }, {
     path: '/List',
     component: () => import('./List'),
+  }, {
+    path: '/Loading',
+    component: () => import('./Loading'),
   }, {
     path: '/Pagination',
     component: () => import('./Pagination'),
