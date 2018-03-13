@@ -39,7 +39,10 @@ export default class ListItem extends Component {
     // 点击回调
     onClick: PropTypes.func,
     // 垂直方向的对其方式
-    verticalAlign: PropTypes.oneOf(['center', 'top', 'bottom']),
+    /**
+     * 2018.03.13 备注：该属性没看出来有什么作用，暂时先取消了
+     */
+    // verticalAlign: PropTypes.oneOf(['center', 'top', 'bottom']),
     // 清单内容过多时是否折行显示, true - 折行显示 false - 不折行显示，超出部分显示省略号
     wrap: PropTypes.bool,
     // 是否能左滑显示'删除'
@@ -189,8 +192,8 @@ export default class ListItem extends Component {
     return (
       <TagName
         className={classNames(`${prefixCls}-item`, className, {
-          [`${prefixCls}-item-align-top`]: verticalAlign === 'top',
-          [`${prefixCls}-item-align-bottom`]: verticalAlign === 'bottom',
+          // [`${prefixCls}-item-align-top`]: verticalAlign === 'top',
+          // [`${prefixCls}-item-align-bottom`]: verticalAlign === 'bottom',
           [`${prefixCls}-item-clicked`]: highlight && this.state.clicked,
           [`${prefixCls}-item-slip`]: slip,
         })}

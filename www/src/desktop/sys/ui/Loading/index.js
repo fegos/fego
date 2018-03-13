@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Loading, Button } from 'fego';
+import { Loading, Button, Icon } from 'fego';
 import style from './index.less';
 
 export default class Page extends Component {
@@ -32,6 +32,12 @@ export default class Page extends Component {
         <div className="section">
           <p className="title">带自定义文案的加载中状态：</p>
           <Loading loading type="bar" tip="正在拼命加载，别催，再催砍人了！！" >
+            {ctn}
+          </Loading>
+        </div>
+        <div className="section">
+          <p className="title">自定义加载图标：</p>
+          <Loading loading type={<Icon name="error" />} >
             {ctn}
           </Loading>
         </div>

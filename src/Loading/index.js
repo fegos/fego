@@ -7,6 +7,8 @@ export default class Loading extends React.Component {
   static defaultProps = {
     // 前缀
     prefixCls: 'ns-loading',
+    // 状态
+    loading: true,
     // 时间延迟
     delay: 0,
     // 文案
@@ -19,12 +21,14 @@ export default class Loading extends React.Component {
   static propTypes = {
     // 前缀
     prefixCls: PropTypes.oneOf(['ns-loading']),
+    // 状态
+    loading: PropTypes.bool,
     // 时间延迟
     delay: PropTypes.number,
     // 文案
     tip: PropTypes.string,
-    // 默认的icon类型
-    type: PropTypes.oneOf(['bar', 'circle']),
+    // 默认的icon类型:'bar', 'circle', 或自定义
+    type: PropTypes.node,
     // icon 大小
     size: PropTypes.oneOf(['default', 'small', 'large']),
   }
@@ -83,6 +87,12 @@ export default class Loading extends React.Component {
       iconEl = (
         <div className={cls} >
           <Icon name="loading" className="circle" />
+        </div>
+      );
+    } else if (React.isValidElement(type)) {
+      iconEl = (
+        <div className={cls} >
+          {type}
         </div>
       );
     }
