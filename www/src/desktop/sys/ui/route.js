@@ -36,5 +36,8 @@ export default [{
   }, {
     path: '/ui/Card',
     component: () => import('./Card'),
+  }, {
+    path: '/ui/Icon',
+    component: () => import('./Icon'),
   }],
 }];

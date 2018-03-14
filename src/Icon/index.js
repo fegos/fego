@@ -17,7 +17,7 @@ export default function Icon(props) {
   <!-- RENDERS AS: -->
   <svg> <use xlink:href="/svg/svg-sprite#my-icon"></use> </svg>
     */
-  return <svg className={cls} style={_style} aria-hidden="true" {...rest}><use xlinkHref={`#${hrefPrefix}-${name}`} /></svg>
+  return <svg className={cls} style={_style} aria-hidden="true" {...rest}><use xlinkHref={`#${hrefPrefix}-${name}`} /></svg>;
 }
 /**
 symbol引用

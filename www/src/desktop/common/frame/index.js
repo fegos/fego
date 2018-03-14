@@ -30,6 +30,10 @@ const menus = [{
   title: 'Form',
   subTitle: '表单',
 }, {
+  link: '/ui/Icon',
+  title: 'Icon',
+  subTitle: '图标',
+}, {
   link: '/ui/Input',
   title: 'Input',
   subTitle: '输入框',
