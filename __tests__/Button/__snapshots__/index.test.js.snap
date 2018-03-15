@@ -7,5 +7,9 @@ exports[`button test button snapshot 1`] = `
   onClick={[Function]}
   style={undefined}
   type="button"
-/>
+>
+  <span>
+    button
+  </span>
+</button>
 `;
