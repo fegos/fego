@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button test button snapshot 1`] = `
+<button
+  className="ns-btn ns-btn-default"
+  disabled={false}
+  onClick={[Function]}
+  style={undefined}
+  type="button"
+/>
+`;
