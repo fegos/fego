@@ -1,5 +1,9 @@
 module.exports = {
   bail: true, // 遇到执行fail的测试用例就停止执行，方便定位错误
+  collectCoverage: true, // 代码覆盖率
+  coverageDirectory: '<rootDir>/coverage-report', // jest 生成的关于覆盖了的文件的输出地址
+  collectCoverageFrom: ['src/[A-Z]*/*.{js,jsx}'], // 收集代码覆盖率的文件为src下的首字母大写文件夹(组件)下的js文件
+  coveragePathIgnorePatterns: ['/node_modules/', 'www', 'site'], // 收集代码覆盖率忽略的文件
   moduleDirectories: ['node_modules', 'src'], // 查找包的路径
   moduleFileExtensions: ['js', 'jsx'], // 文件扩展名
   moduleNameMapper: {

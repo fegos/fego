@@ -9,7 +9,7 @@ describe('button test', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('fires pressIn event', () => {
+  it('click event', () => {
     const onClickFunc = jest.fn();
     const button = shallow(<Button onClick={onClickFunc}>button</Button>);
     button.simulate('click');
