@@ -3,16 +3,16 @@
 // Sizing shortcuts
 .size(@width;
 @height) {
-    width: @width;
-    height: @height;
+  width: @width;
+  height: @height;
 }
 
 .square(@size) {
-    .size(@size;
-    @size);
+  .size(@size;
+  @size);
 } // Opacity
 .opacity(@opacity) {
-    opacity: @opacity; // IE8 filter
-    @opacity-ie: (@opacity * 100);
-    filter:~"alpha(opacity=@{opacity-ie})";
+  opacity: @opacity; // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter:~"alpha(opacity=@{opacity-ie})";
 }

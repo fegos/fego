@@ -2,6 +2,17 @@ module.exports = {
   bail: true, // 遇到执行fail的测试用例就停止执行，方便定位错误
   moduleDirectories: ['node_modules', 'src'], // 查找包的路径
   moduleFileExtensions: ['js', 'jsx'], // 文件扩展名
+  moduleNameMapper: {
+    /**
+     * 用于解决 Icon 组件引入字体文件引起的 jest typeError
+     * 关于 moduleNameMapper 配置项说明，戳 → https://facebook.github.io/jest/docs/en/configuration.html#modulenamemapper-object-string-string
+     * 就是为正则匹配的文件指定 mock 的方式，例如代码中直接 import 'xx.png' 会导致测试执行时报错，
+     * 所以需通过为 png 文件指定 mock 方式来解决这一问题
+     * 详见 GitHub jest issue → https://github.com/facebook/jest/issues/2663#issuecomment-340243320
+     * 关于 identity-obj-proxy, 戳 → https://github.com/keyanzhang/identity-obj-proxy
+     */
+    '\\.(jpg|png|font|svg|ttf|woff|woff2)$': 'identity-obj-proxy',
+  },
   notify: true,
   /**
    * setupFiles vs setupTestFrameworkScriptFile
