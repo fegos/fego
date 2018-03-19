@@ -14,7 +14,7 @@ export default class Button extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     const { loading } = nextProps;
-    if (typeof loading === 'boolean' && this.props.oading !== loading) {
+    if (typeof loading === 'boolean' && this.props.loading !== loading) {
       this.setState({ loading });
     }
   }
