@@ -15,7 +15,8 @@ module.exports = {
      * 详见 GitHub jest issue → https://github.com/facebook/jest/issues/2663#issuecomment-340243320
      * 关于 identity-obj-proxy, 戳 → https://github.com/keyanzhang/identity-obj-proxy
      */
-    '\\.(jpg|png|font|svg|ttf|woff|woff2)$': 'identity-obj-proxy',
+    '\\.(jpg|png|svg|ttf|woff|woff2)$': 'identity-obj-proxy',
+    'font.js$': 'identity-obj-proxy',
   },
   notify: true,
   /**

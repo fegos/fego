@@ -3,8 +3,7 @@
  * @author esky
  */
 import React from 'react';
-// import './iconfont.js';
-import './iconfont.font';
+import './font.js';
 
 export default function Icon(props) {
   const {
