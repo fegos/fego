@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card test card snapshot 1`] = `
+<div
+  className="ns-card ns-card-border ns-card-hoverable"
+  style={undefined}
+>
+  <div
+    className="ns-card-body"
+  >
+    <div>
+      <p>
+        card content
+      </p>
+      <p>
+        card content
+      </p>
+      <p>
+        card content
+      </p>
+    </div>
+  </div>
+</div>
+`;
