@@ -1,6 +1,7 @@
 import React from 'react';
 import Renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 import Button from 'Button';
 import Icon from 'Icon';
 
@@ -10,7 +11,7 @@ describe('button test', () => {
     expect(button).toMatchSnapshot();
   });
 
-  it('different type of button', () => {
+  it('different type of button will render different classes', () => {
     const defaultButton = shallow(<Button type="default">button</Button>);
     const primaryButton = shallow(<Button type="primary">button</Button>);
     const dangerButton = shallow(<Button type="danger">button</Button>);
@@ -26,18 +27,18 @@ describe('button test', () => {
     expect(ghostButton.find('.ns-btn-default')).toHaveLength(0);
   });
 
-  it('button with icon', () => {
+  it('button with icon prop will render a icon', () => {
     const button = mount(<Button icon="home">button</Button>);
     expect(button.find('.nsicon')).toHaveLength(1);
   });
 
-  it('loading button', () => {
+  it('loading button will render a loading icon', () => {
     const button = shallow(<Button loading>button</Button>);
     expect(button.find(Icon)).toHaveLength(1);
     expect(button.find('.ns-btn-loading')).toHaveLength(1);
   });
 
-  it('fire click event', () => {
+  it('fire click event, callback should be called', () => {
     const onClickFunc = jest.fn();
     const button = mount(<Button onClick={onClickFunc}>button</Button>);
     button.simulate('click');
@@ -45,7 +46,7 @@ describe('button test', () => {
     expect(onClickFunc).toHaveBeenCalledTimes(1);
   });
 
-  it('disabled button don\'t fire click event', () => {
+  it('disabled button doesn\'t fire click event, and callback should not be called', () => {
     const onClickFunc = jest.fn();
     const button = mount(<Button onClick={onClickFunc} disabled>button</Button>);
     button.simulate('click');
@@ -53,62 +54,42 @@ describe('button test', () => {
     expect(onClickFunc).toHaveBeenCalledTimes(0);
   });
 
-  it('fire willReceiveProps lifecycle', () => {
+  it('fire willReceiveProps lifecycle, and state should change', () => {
     const button = mount(<Button loading>button</Button>);
+    const spy = sinon.spy(Button.prototype, 'componentWillReceiveProps');
+
     expect(button.state('loading')).toBe(true);
+
     button.setProps({
       loading: false,
     });
+
     expect(button.state('loading')).toBe(false);
+
     button.setProps({
       loading: {
         delay: 300,
       },
     });
+
+    expect(spy.callCount).toBe(2);
+
+    spy.restore();
   });
 
-  it('fire unmount lifecycle', () => {
+  it('two click event should only trigger one time onClick callback', () => {
     const onClickFunc = jest.fn();
     const button = mount(<Button onClick={onClickFunc} loading={{ delay: 300 }}>button</Button>);
     button.simulate('click');
     button.simulate('click');
-    button.unmount();
     expect(onClickFunc).toHaveBeenCalledTimes(1);
   });
-});
 
-describe('insert space', () => {
-  it('button has two chinese characters as children: one space will be inserted', () => {
-    const button = shallow(<Button>按钮</Button>);
-    expect(button.contains('按 钮')).toBe(true);
-  });
-
-  it('button has two chinese characters and loading icon as children: one space will be inserted', () => {
-    const button = shallow(<Button icon="loading">按钮</Button>);
-    expect(button.contains('按 钮')).toBe(true);
-    const button2 = shallow(<Button icon="home">按钮</Button>);
-    expect(button2.contains('按钮')).toBe(true);
-    expect(button2.contains('按 钮')).toBe(false);
-  });
-
-  it('button has object children which has two chinese characters: one space will be inserted', () => {
-    const button = shallow(<Button><span>按钮</span></Button>);
-    expect(button.contains('按 钮')).toBe(true);
-    const button2 = shallow(<Button icon="loading"><span>按钮</span></Button>);
-    expect(button2.contains('按 钮')).toBe(true);
-    const button3 = shallow(<Button icon="home"><span>按钮</span></Button>);
-    expect(button3.contains('按 钮')).toBe(false);
-  });
-
-  it('none chinese characters: one space will not be inserted', () => {
-    const button = shallow(<Button>button</Button>);
-    expect(button.contains('button')).toBe(true);
-    const button2 = shallow(<Button><span>button</span></Button>);
-    expect(button2.contains('button')).toBe(true);
-  });
-
-  it('none children: one space will not be inserted', () => {
-    const button = shallow(<Button />);
-    expect(button.children()).toHaveLength(0);
+  it('fire unmount lifecycle, and componentWillUnmount should be called', () => {
+    const button = mount(<Button loading={{ delay: 300 }}>button</Button>);
+    const spy = sinon.spy(Button.prototype, 'componentWillUnmount');
+    button.unmount();
+    expect(spy.calledOnce).toBe(true);
+    spy.restore();
   });
 });

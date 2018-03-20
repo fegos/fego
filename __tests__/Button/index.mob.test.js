@@ -1,6 +1,7 @@
 import React from 'react';
 import Renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 import Button from 'Button/index.mob';
 import Icon from 'Icon';
 
@@ -10,7 +11,7 @@ describe('button test', () => {
     expect(button).toMatchSnapshot();
   });
 
-  it('different type of button', () => {
+  it('different type of button will render different classes', () => {
     const defaultButton = shallow(<Button type="default">button</Button>);
     const primaryButton = shallow(<Button type="primary">button</Button>);
     const dangerButton = shallow(<Button type="danger">button</Button>);
@@ -26,31 +27,48 @@ describe('button test', () => {
     expect(ghostButton.find('.ns-btn-default')).toHaveLength(0);
   });
 
-  it('button with icon', () => {
+  it('button with icon prop will render a icon', () => {
     const button = mount(<Button icon="home">button</Button>);
     expect(button.find('.nsicon')).toHaveLength(1);
   });
 
-  it('loading button', () => {
+  it('loading button will render a loading icon', () => {
     const button = shallow(<Button loading>button</Button>);
     expect(button.find(Icon)).toHaveLength(1);
     expect(button.find('.ns-btn-loading')).toHaveLength(1);
   });
 
   it('fire touchstart event', () => {
-    const onClickFunc = jest.fn();
-    const button = mount(<Button onClick={onClickFunc}>button</Button>);
-    const disabledButton = mount(<Button onClick={onClickFunc} disabled>button</Button>);
+    const button = mount(<Button>button</Button>);
+
     expect(button.state('clicked')).toBe(false);
-    expect(disabledButton.state('clicked')).toBe(false);
+
     button.simulate('touchstart');
-    button.simulate('touchstart');
-    disabledButton.simulate('touchstart');
-    // 移动端的 touchstart 事件，但是 enzyme 貌似不能区分，所以此处的 touchstart 并不是手指按下就不松开了
-    // 而是按下-松开这整个过程都有，只不过只会显示的调用 onTouchStart 的回调罢了
+
     expect(button.state('clicked')).toBe(true);
-    expect(disabledButton.state('clicked')).toBe(false);
-    expect(onClickFunc).toHaveBeenCalledTimes(0);
+  });
+
+  it('fire touchstart two time should only trigger setState one time', () => {
+    const button = mount(<Button>button</Button>);
+    const spy = sinon.spy(Button.prototype, 'setState');
+
+    button.simulate('touchstart');
+    button.simulate('touchstart');
+
+    expect(spy.callCount).toBe(1);
+
+    spy.restore();
+  });
+
+
+  it('disabled button should fire touchstart but change nothing', () => {
+    const button = mount(<Button disabled>button</Button>);
+
+    expect(button.state('clicked')).toBe(false);
+
+    button.simulate('touchstart');
+
+    expect(button.state('clicked')).toBe(false);
   });
 
   it('fire touchend event', () => {
@@ -62,7 +80,7 @@ describe('button test', () => {
     expect(onClickFunc).toHaveBeenCalledTimes(1);
   });
 
-  it('fire willReceiveProps lifecycle', () => {
+  it('fire willReceiveProps lifecycle, and state should change', () => {
     const button = mount(<Button loading>button</Button>);
     expect(button.state('loading')).toBe(true);
     button.setProps({
