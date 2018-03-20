@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox test checkbox snapshot 1`] = `
+<label
+  className="ns-checkbox-wrapper"
+  htmlFor={undefined}
+  style={undefined}
+>
+  <span
+    className="ns-checkbox"
+  >
+    <input
+      className="ns-checkbox-ipt"
+      disabled={undefined}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="ns-checkbox-inner"
+    />
+  </span>
+  <span
+    className="ns-checkbox-label"
+  >
+    checkbox
+  </span>
+</label>
+`;
