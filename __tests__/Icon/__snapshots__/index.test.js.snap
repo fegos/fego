@@ -1,28 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon test icon snapshot 1`] = `
-<label
-  className="ns-radio-wrapper"
-  htmlFor={undefined}
-  style={undefined}
+<svg
+  aria-hidden="true"
+  className="nsicon"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
 >
-  <span
-    className="ns-radio"
-  >
-    <input
-      className="ns-radio-ipt"
-      disabled={undefined}
-      name="yes"
-      onChange={[Function]}
-      type="radio"
-    />
-    <span
-      className="ns-radio-inner"
-    >
-      <span
-        className="ns-radio-inner-circle"
-      />
-    </span>
-  </span>
-</label>
+  <use
+    xlinkHref="#nsicon-yes"
+  />
+</svg>
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Renderer from 'react-test-renderer';
-import Icon from 'Radio';
+import Icon from 'Icon';
 
 describe('Icon test', () => {
   it('icon snapshot', () => {
