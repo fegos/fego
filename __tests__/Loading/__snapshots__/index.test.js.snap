@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading test loading snapshot 1`] = `
+<div
+  className="ns-loading"
+>
+  <div
+    className="ns-loading-ctn"
+  >
+    <div
+      className="ns-loading-icon"
+    >
+      <span
+        className="bar"
+      />
+      <span
+        className="bar bar-2"
+      />
+      <span
+        className="bar bar-3"
+      />
+    </div>
+  </div>
+  <div
+    className="ns-loading-container is-loading f-cb"
+  >
+    <div>
+      <p>
+        文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容
+      </p>
+      <p>
+        文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容
+      </p>
+      <p>
+        文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容
+      </p>
+      <p>
+        文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容
+      </p>
+    </div>
+  </div>
+</div>
+`;

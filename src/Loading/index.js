@@ -46,7 +46,7 @@ export default class Loading extends React.Component {
         if (this.timer) {
           clearTimeout(this.timer);
         }
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
           // 启动loading，根据设置的延迟时间来启动
           this.setState({
             loading: true,
