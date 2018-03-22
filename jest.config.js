@@ -3,7 +3,7 @@ module.exports = {
   collectCoverage: true, // 代码覆盖率
   coverageDirectory: '<rootDir>/coverage-report', // jest 生成的关于覆盖了的文件的输出地址
   collectCoverageFrom: ['src/[A-Z]*/*.{js,jsx}'], // 收集代码覆盖率的文件为src下的首字母大写文件夹(组件)下的js文件
-  coveragePathIgnorePatterns: ['/node_modules/', 'www', 'site'], // 收集代码覆盖率忽略的文件
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/www/', '<rootDir>/site/', '<rootDir>/src/Icon/font'], // 收集代码覆盖率忽略的文件
   moduleDirectories: ['node_modules', 'src'], // 查找包的路径
   moduleFileExtensions: ['js', 'jsx'], // 文件扩展名
   moduleNameMapper: {
@@ -27,7 +27,7 @@ module.exports = {
    */
   // setupFiles: ['./enzyme.setup.js'], // enzyme 启动配置文件
   setupTestFrameworkScriptFile: './enzyme.setup.js', // enzyme 启动配置文件
-  testPathIgnorePatterns: ['node_modules', 'site', 'www'], // 搜索测试用例时忽略的路径
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/site/', '<rootDir>/www/'], // 搜索测试用例时忽略的路径
   testRegex: '(/__tests__/.*test)\\.jsx?$', // 匹配测试文件，当前指定为以 .test.js(x) 结尾的文件
   verbose: true, // 在执行测试用例期间就报告每个测试用例的执行结果
 };
