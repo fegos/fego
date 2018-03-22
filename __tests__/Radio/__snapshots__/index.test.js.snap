@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio test Radio snapshot 1`] = `
+<label
+  className="ns-radio-wrapper"
+  htmlFor={undefined}
+  style={undefined}
+>
+  <span
+    className="ns-radio"
+  >
+    <input
+      className="ns-radio-ipt"
+      disabled={undefined}
+      onChange={[Function]}
+      type="radio"
+    />
+    <span
+      className="ns-radio-inner"
+    >
+      <span
+        className="ns-radio-inner-circle"
+      />
+    </span>
+  </span>
+  <span
+    className="ns-radio-label"
+  >
+    radio
+  </span>
+</label>
+`;
