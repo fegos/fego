@@ -2,7 +2,6 @@ import React from 'react';
 import Renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 import Loading from 'Loading';
-import Icon from 'Icon';
 
 describe('Loading test', () => {
   const ctn = (

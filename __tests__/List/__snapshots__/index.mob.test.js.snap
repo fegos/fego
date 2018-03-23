@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List mobile test List snapshot 1`] = `
+<div
+  className="ns-list"
+  style={undefined}
+>
+  <div
+    className="ns-list-item"
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    style={undefined}
+  >
+    <div
+      className="ns-list-item-inner"
+      style={Object {}}
+    >
+      <div
+        className="ns-list-title"
+      >
+        title
+      </div>
+      <div
+        className="ns-list-arrow"
+      >
+        <svg
+          aria-hidden="true"
+          className="nsicon"
+          style={
+            Object {
+              "height": undefined,
+              "width": undefined,
+            }
+          }
+        >
+          <use
+            xlinkHref="#nsicon-right-arrow"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

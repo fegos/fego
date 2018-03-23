@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Icon } from 'fego';
+import Icon from '../Icon';
 
 export default class ListItem extends Component {
   static defaultProps = {
@@ -13,7 +13,7 @@ export default class ListItem extends Component {
     // 点击回调
     onClick: () => { },
     // 垂直方向的对其方式
-    verticalAlign: 'center',
+    // verticalAlign: 'center',
     // 清单内容过多时是否折行显示, true - 折行显示 false - 不折行显示，超出部分显示省略号
     wrap: true,
     // 是否能左滑
@@ -153,8 +153,8 @@ export default class ListItem extends Component {
       const diffPageY = touch.pageY - this.touchEvent.pageY;
       const { onClick } = this.props;
       // 点击回调的要求：触摸开始和结束时同一个点
-      if ((onClick instanceof Function) && diffPageX === 0 && diffPageY === 0) {
-        onClick instanceof Function && onClick(e);
+      if (diffPageX === 0 && diffPageY === 0) {
+        onClick(e);
       }
     }
 
