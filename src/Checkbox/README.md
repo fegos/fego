@@ -1,3 +1,8 @@
+---
+title: Checkbox
+subTitle: 复选框
+---
+
 # 复选框 Checkbox
 
 ### 组件描述

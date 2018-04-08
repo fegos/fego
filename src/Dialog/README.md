@@ -1,3 +1,8 @@
+---
+title: Modal
+subTitle: 模态框
+---
+
 # 模态框 Modal
 
 ### 组件描述

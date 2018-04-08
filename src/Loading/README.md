@@ -1,3 +1,8 @@
+---
+title: Loading
+subTitle: 加载
+---
+
 # 加载 Loading
 
 ### 组件描述

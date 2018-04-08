@@ -4,9 +4,25 @@ import style from './index.less';
 
 export default class Page extends Component {
   state = {}
+  componentDidMount() {
+    let outer = document.getElementById('outer');
+    let inner = document.getElementById('inner');
+
+    outer.addEventListener('click', () => {
+      console.log('outer')
+    });
+
+    inner.addEventListener('click', () => {
+      console.log('inner')
+    });
+  }
   render() {
     return (
       <div className={style.page}>
+        <div onClick={()=>{console.log('click outer')}} id="outer">
+          click
+          <div id="inner" onClick={(e)=>{console.log('click outer'); e.stopPropagation();}}>inner</div>
+        </div>
         <div className="section">
           <p className="title">默认按钮：</p>
           <Button type="default">default Button</Button>

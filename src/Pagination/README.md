@@ -1,3 +1,8 @@
+---
+title: Pagination
+subTitle: 分页
+---
+
 # 分页 Pagination
 
 ### 组件描述
