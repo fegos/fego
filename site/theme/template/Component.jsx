@@ -14,7 +14,6 @@ function Component(props) {
   );
 }
 export default collect(async (nextProps) => {
-  console.log(nextProps)
   const { pageData } = nextProps;
   const returnedPageData = pageData instanceof Function ? pageData : (pageData.README || pageData.index);
   if (!pageData || !returnedPageData) {

@@ -36,7 +36,6 @@ export default class Layout extends Component {
                 .map((file) => {
                   if (file.title) {
                     const path = file.filename.replace(/src\//, 'components/').replace(/README\.md/, '');
-                    console.log(path)
                     return (
                       <li key={file.title} className={pathname.indexOf(path) > -1 ? 'menu-item menu-item-active' : 'menu-item'}>
                         <Link className="component" to={path}>{`${file.title} ${file.subTitle}`}</Link>
