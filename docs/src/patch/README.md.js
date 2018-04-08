@@ -1,0 +1,1 @@
+webpackJsonp([3],{475:function(e,t){e.exports={content:["article",["h1","\u517c\u5bb9\u8865\u4e01"]],meta:{filename:"src/patch/README.md"},toc:["ul",["li",["a",{className:"bisheng-toc-h1",href:"#\u517c\u5bb9\u8865\u4e01",title:"\u517c\u5bb9\u8865\u4e01"},"\u517c\u5bb9\u8865\u4e01"]]]}}});
