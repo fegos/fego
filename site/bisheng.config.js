@@ -19,5 +19,5 @@ module.exports = {
     return config;
   },
   entryName: 'index',
-  root: '/sites/fego-rn/',
+  root: '/sites/fego/',
 };

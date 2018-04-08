@@ -27,7 +27,7 @@ module.exports = {
 	// 其他自定义主题配置，可在模板中通过 this.props.themeConfig 获取
 	themeConfig: {
 		rootLink: '/index',
-		siteTitle: 'Fego-RN 组件库',
+		siteTitle: 'Fego 组件库',
 		copyright: 'Fego',
 		navigation: []
 	},
