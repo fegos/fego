@@ -5,7 +5,7 @@ module.exports = {
   source: {
     components: 'src',
   },
-  output: './site/build/',
+  output: './docs',
   theme: './site/theme/',
   themeConfig: {
     rootLink: '/',
