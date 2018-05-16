@@ -2,7 +2,7 @@
   "name": "fego",
   "version": "0.0.1",
   "description": "基于 React 的 web & wap 开发库",
-  "homepage": "http://fe.hhtcex.com",
+  "homepage": "https://www.fegos.cn",
   "main": "lib/index.js",
   "module": "es/index.js",
   "author": "esky asyxu",
@@ -19,10 +19,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/fegos/fego"
+    "url": "https://github.com/fegos/fego.git"
   },
   "bugs": {
-    "url": "http://github.com/fegos/fego/issues"
+    "url": "https://github.com/fegos/fego/issues"
   },
   "files": [],
   "license": "MIT",
