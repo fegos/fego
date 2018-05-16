@@ -1,6 +1,6 @@
 {
   "name": "fego",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "基于 React 的 web & wap 开发库",
   "homepage": "https://www.fegos.cn",
   "main": "lib/index.js",
@@ -24,7 +24,11 @@
   "bugs": {
     "url": "https://github.com/fegos/fego/issues"
   },
-  "files": [],
+  "files": [
+    "es",
+    "lib",
+    ".babelrc"
+  ],
   "license": "MIT",
   "dependencies": {
     "react": "^16.0.0",
