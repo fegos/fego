@@ -1,0 +1,96 @@
+@import '../mixin/index';
+
+/*  重设各标签默认样式 */
+
+html {
+    height: 100%;
+    color: @base-color;
+}
+
+body {
+    min-height: 100%;
+}
+
+
+/* 去掉列表前的标识, li 会继承 */
+
+ol,
+ul {
+    list-style: none;
+}
+
+
+/* 默认不显示下划线，保持页面简洁 */
+
+ins,
+a {
+    text-decoration: none;
+}
+
+// 重置超链接默认色
+:any-link {
+    color: @base-color;
+}
+
+:-webkit-any-link {
+    color: @base-color;
+}
+
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 让标题都自定义, 移除浏览器默认样式 */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+    font-size: 100%;
+    font-weight: 500;
+}

@@ -1,0 +1,210 @@
+@import "./base.less";
+
+.@{pagination-prefix} {
+  display: block;
+  font-size: @font-size-base;
+  color: @text-color;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  select{
+    color: @base-color;
+  }
+  &-total-text {
+    display: inline-block;
+    margin-right: @interval;
+    height: @pagination-height-base;
+    line-height: @pagination-height-base;
+    vertical-align: middle;
+  }
+  &-item {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    height: @pagination-height-base;
+    line-height: @pagination-height-base;
+    margin-right: @interval;
+    min-width: @pagination-height-base;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: @border-radius-base;
+    border: @border-width-base @border-style-base @border-color-base;
+    color: @text-color;
+    outline: 0;
+    user-select: none;
+    &:hover {
+      color: @primary-color;
+      border-color: @primary-color;
+      transition: all .3s @ease-in-out;
+    }
+    &-active {
+      color: #fff;
+      border-color: @primary-color;
+      background-color: @primary-color;
+      &:hover {
+        color: #fff;
+        border-color: @primary-5;
+        background-color: @primary-5;
+
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &-prev,
+  &-jump-prev,
+  &-next,
+  &-jump-next {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    height: @pagination-height-base;
+    line-height: @pagination-height-base - 2*@border-width-base;
+    margin-right: @interval;
+    min-width: @pagination-height-base;
+    cursor: pointer;
+    color: @text-color;
+    outline: 0;
+    user-select: none;
+    transition: all .3s @ease-in-out;
+  }
+  &-prev,
+  &-next {
+    color: @text-color-secondary;
+    background-color: #fff;
+    border-radius: @border-radius-base;
+    border: @border-width-base @border-style-base @border-color-base;
+    &:hover {
+      color: @primary-color;
+      border-color: @primary-color;
+    }
+    &-disabled {
+      cursor: not-allowed;
+      color: @disabled-color;
+      &:hover {
+        color: @disabled-color;
+        border-color: @border-color-base;
+      }
+    }
+  }
+  &-next {
+    margin-right: 0;
+  }
+  &-jump-prev,
+  &-jump-next {
+    &:after {
+      display: block;
+      letter-spacing: 1px;
+      text-align: center;
+      font-weight: bold;
+      color: @text-color-secondary;
+      content: "\2E\2E\2E";
+    }
+    &:hover {
+      &:after {
+        color: @primary-5;
+        font-weight: normal;
+      }
+    }
+  }
+  &-jump-prev {
+    &:hover {
+      &:after {
+        content: "\3C\3C";
+      }
+    }
+  }
+  &-jump-next {
+    &:hover {
+      &:after {
+        content: "\3E\3E";
+      }
+    }
+  }
+  &-options {
+    display: inline-block;
+    margin-left: @interval + 5px;
+    vertical-align: middle;
+    &-size-changer {
+      display: inline-block;
+      vertical-align: middle;
+      .@{pagination-prefix}-select {
+        width: 100px;
+      }
+    }
+    &-jumper {
+      display: inline-block;
+      margin-left: @interval + 5px;
+      height: @pagination-height-base;
+      input {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: (@pagination-height-base - @font-size-base * @line-height-base) / 2 7px;
+        margin: 0 8px;
+        width: 50px;
+        height: @pagination-height-base;
+        cursor: text;
+        font-size: @font-size-base;
+        line-height: @line-height-base;
+        color: @text-color;
+        border: @border-width-base @border-style-base @border-color-base;
+        border-radius: @border-radius-base;
+        transition: all .3s @ease-in-out;
+        &:focus,
+        &:hover {
+          outline: none;
+          border-color: @primary-color;
+        }
+      }
+    }
+  }
+}
+
+.pagination-size( @font-size, @height, @line-height, ) {
+  font-size: @font-size;
+  .@{pagination-prefix}-total-text {
+    height: @height;
+    line-height: @height;
+  }
+  .@{pagination-prefix}-item {
+    height: @height;
+    line-height: @height;
+    min-width: @height;
+  }
+  .@{pagination-prefix}-prev,
+  .@{pagination-prefix}-jump-prev,
+  .@{pagination-prefix}-next,
+  .@{pagination-prefix}-jump-next {
+    height: @height;
+    line-height: @height - 2*@border-width-base;
+    min-width: @height;
+  }
+
+  .@{pagination-prefix}-options {
+    .@{pagination-prefix}-options-size-changer {
+      select {
+        height: @height;
+      }
+    }
+    .@{pagination-prefix}-options-jumper {
+      height: @height;
+      input {
+        padding: (@height - @font-size * @line-height) / 2 7px;
+        height: @height;
+        font-size: @font-size;
+        line-height: @line-height;
+      }
+    }
+  }
+}
+
+.@{pagination-sm-prefix} {
+  .pagination-size(@font-size-base, @pagination-height-sm, @line-height-base);
+}
+
+.@{pagination-lg-prefix} {
+  .pagination-size(@font-size-lg, @pagination-height-lg, @line-height-base);
+}

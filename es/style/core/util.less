@@ -1,0 +1,75 @@
+//消除浮动
+.f-cb {
+	display: block;
+	zoom: 1;
+	&:after {
+		content: " ";
+		display: block;
+		font-size: 0;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+// 不占位隐藏 
+.f-hide {
+	display: none;
+}
+
+// 占位隐藏 visibility
+.f-hide2 {
+	visibility: hidden;
+}
+
+// 定位隐藏 position
+.f-hide3 {
+	position: absolute;
+	left: -99999px;
+	top: -99999px;
+}
+
+.f-fl {
+	float: left;
+}
+
+.f-fr {
+	float: right;
+}
+
+.f-tal {
+	text-align: left;
+}
+
+.f-tac {
+	text-align: center;
+}
+
+.f-tar {
+	text-align: right;
+}
+
+.f-fwn{font-weight:normal;}
+
+.f-fwb{font-weight:bold;}
+
+// 不折行，溢出隐藏
+.f-nowrap {
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: keep-all;
+	word-wrap: normal;
+}
+
+// 折行
+.f-wrap {
+	white-space: normal;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+// 溢出隐藏
+.f-ofh{
+	overflow: hidden;
+}

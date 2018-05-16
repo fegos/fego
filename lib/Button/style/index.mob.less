@@ -1,0 +1,56 @@
+@import './base';
+
+@dialog-btn-prefix: ~"@{prefix}-dialog";
+
+.@{btn-prefix} {
+  // 移动端禁止长按选择文本
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  // 移动端宽度默认撑满父容器
+  &:not(&-circle):not(&-circle-outline) {
+    width: 100%;
+  }
+  // 点击效果，此处采用的做法时给一个 shadow 背景
+  &-clicked:after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    background: @shadow-color;
+    opacity: 0.4;
+    display: block;
+  }
+  // 圆形按钮的点击效果背景设置为圆形
+  &-circle,
+    &-circle-outline {
+    &.@{btn-prefix}-clicked:after {
+      border-radius: 50%;
+    }
+  }
+}
+
+// 移动端 dialog 里的 button 与通用 button 样式有差异
+// PC端 dialog 里的 button 与通用 button 一样
+.@{dialog-btn-prefix} {
+  .@{btn-prefix} {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    height: 44px;
+    background-color: transparent;
+    &.@{btn-prefix}-primary {
+      .button-color(@primary-color; transparent; transparent);
+      color: @primary-color;
+      border-left: @border-width-base @border-style-base @border-color-split;
+      margin-left: 0;
+    }
+  }
+}

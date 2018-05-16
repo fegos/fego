@@ -1,0 +1,66 @@
+@import './base.less';
+
+.@{pagination-prefix} {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: @font-size-base;
+  color: @text-color;
+  &-item {
+    box-sizing: border-box;
+    height: @pagination-height-base;
+    line-height: @pagination-height-base;
+    color: @text-color;
+    user-select: none;
+    &-active {
+      color: @primary-color;
+    }
+  }
+  &-prev,
+  &-next {
+    user-select: none;
+    transition: all .3s @ease-in-out;
+    color: @text-color-secondary;
+    background-color: #fff;
+    .@{prefix}-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      & > span{
+        line-height: 1;
+      }
+    }
+  }
+  &-prev {
+    .@{prefix}-btn {
+      padding: 0 10px 0 5px;
+    }
+  }
+  &-next {
+    .@{prefix}-btn {
+      padding: 0 5px 0 10px;
+    }
+  }
+}
+
+.pagination-size( @font-size, @height, @line-height, ) {
+  font-size: @font-size;
+  .@{pagination-prefix}-item {
+    height: @height;
+    line-height: @height;
+  }
+  .@{pagination-prefix}-prev,
+  .@{pagination-prefix}-next {
+    height: @height;
+    line-height: @height - 2*@border-width-base;
+  }
+}
+
+.@{pagination-sm-prefix} {
+  .pagination-size(@font-size-base, @pagination-height-sm, @line-height-base);
+}
+
+.@{pagination-lg-prefix} {
+  .pagination-size(@font-size-lg, @pagination-height-lg, @line-height-base);
+}

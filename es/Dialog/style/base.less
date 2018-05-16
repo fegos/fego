@@ -1,0 +1,127 @@
+@import "../../style/mixin/index";
+@dialog-prefix: ~"@{prefix}-dialog";
+.@{dialog-prefix} {
+  &-wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @zindex-dialog;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+  }
+  &-title {
+    margin: 0;
+    font-size: @font-size-lg;
+    line-height: 21px;
+    font-weight: 500;
+    color: @heading-color;
+  }
+  &-content {
+    position: relative;
+    background-color: @component-background;
+    border: 0;
+    border-radius: @border-radius-base;
+    overflow: hidden;
+    background-clip: padding-box;
+    box-shadow: @shadow-2;
+  }
+  &-close {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    text-decoration: none;
+    transition: color .3s ease;
+    color: @text-color-secondary;
+    outline: 0;
+    &-x {
+      font-style: normal;
+      font-size: @font-size-lg;
+    }
+    &:focus,
+    &:hover {
+      color: @primary-color;
+      text-decoration: none;
+    }
+  }
+  &-header {
+    border-radius: @border-radius-base @border-radius-base 0 0;
+    background: @component-background;
+    color: @text-color;
+  }
+  &-body {
+    padding: 16px;
+    font-size: @font-size-base;
+    line-height: 1.5;
+  }
+  &-footer {
+    border-top: @border-width-base @border-style-base @border-color-split;
+    text-align: right;
+    // border-radius: 0 0 @border-radius-base @border-radius-base;
+    button+button {
+      margin-left: 8px;
+      margin-bottom: 0;
+    }
+  }
+  &.zoom-enter,
+  &.zoom-appear {
+    animation-duration: @animation-duration-slow;
+    transform: none; // reset scale avoid mousePosition bug
+    opacity: 0;
+  }
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: @dialog-mask-bg;
+    height: 100%;
+    z-index: @zindex-dialog-mask;
+    &-hidden {
+      display: none;
+    }
+  }
+  &-open {
+    overflow: hidden;
+  }
+  &-confirm,
+  &-warning {
+    &-title {
+      .nsicon {
+        color: @yellow-6;
+      }
+    }
+  }
+  &-info {
+    &-title {
+      .nsicon {
+        color: @blue-6;
+      }
+    }
+  }
+  &-success {
+    &-title {
+      .nsicon {
+        color: @green-6;
+      }
+    }
+  }
+  &-error {
+    &-title {
+      .nsicon {
+        color: @red-6;
+      }
+    }
+  }
+}

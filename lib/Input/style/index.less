@@ -1,0 +1,13 @@
+@import './base.less';
+
+.@{input-prefix}-clear {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.43);
+  }
+}
+
+.@{input-prefix} {
+  &:hover:not(&-disabled) {
+    border-color: @primary-5;
+  }
+}

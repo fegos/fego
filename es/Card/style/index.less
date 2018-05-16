@@ -1,0 +1,85 @@
+@import "../../style/mixin/index";
+@card-prefix: ~"@{prefix}-card";
+@boxPaddingH: 24px;
+@boxPaddingV: 16px;
+
+.heading() {
+  font-size: 16px;
+  padding: @boxPaddingV 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.@{card-prefix} {
+  background-color: @component-background;
+  color: @text-color;
+  &-header,
+  &-body,
+  &-footer {
+    border-top: @border-width-base @border-style-base @border-color-split;
+    &:first-child{
+      border-top: none;
+    }
+  }
+  &-border {
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: @border-radius-base;
+  }
+  &-hoverable {
+    transition: all @ease-in-out .3s;
+    &:hover {
+      box-shadow: @shadow-2;
+    }
+  }
+  &-header {
+    padding: 0 @boxPaddingH;
+    vertical-align: middle;
+    .@{card-prefix}-title {
+      .heading();
+    }
+  }
+  &-cover {
+    & + .@{card-prefix}-body {
+      border-top: none;
+    }
+    & > * {
+      width: 100%;
+      display: block;
+    }
+    & > img {
+      vertical-align: middle;
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: @border-radius-base;
+    }
+    &-no-radius {
+      & > img {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+  &-body {
+    padding: @boxPaddingV @boxPaddingH;
+  }
+  &-footer {
+    vertical-align: middle;
+    &-txt {
+      .heading();
+      padding: @boxPaddingV @boxPaddingH;
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      padding: @boxPaddingV 0;
+      li {
+        flex: 1;
+        text-align: center;
+        & + li {
+          border-left: @border-width-base @border-style-base @border-color-split;
+        }
+      }
+    }
+  }
+}

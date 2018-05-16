@@ -1,0 +1,165 @@
+@import "../color/colors";
+
+@prefix: ns;
+// ICONFONT
+@iconfont-css-prefix    : nsicon;
+@icon-url               : "";
+
+// -------- Colors -----------
+@base-color 			: #333;
+@primary-color          : #a8864d;
+@info-color             : #dbc6a3;
+@success-color          : @green-6;
+@error-color            : @red-6;
+@highlight-color        : @red-6;
+@warning-color          : @yellow-6;
+@normal-color           : #d9d9d9;
+
+// Color used by default to control hover and active backgrounds and for
+// alert info backgrounds.
+@primary-1: color(~`colorPalette("@{primary-color}", 1)`);  // replace tint(@primary-color, 90%)
+@primary-2: color(~`colorPalette("@{primary-color}", 2)`);  // replace tint(@primary-color, 80%)
+// unused
+@primary-3: color(~`colorPalette("@{primary-color}", 3)`);
+@primary-4: color(~`colorPalette("@{primary-color}", 4)`);
+// Color used to control the text color in many active and hover states.
+@primary-5: color(~`colorPalette("@{primary-color}", 5)`);  // replace tint(@primary-color, 20%)
+@primary-6: @primary-color;                                 // don't use, use @primary-color
+// Color used to control the text color of active buttons.
+@primary-7: color(~`colorPalette("@{primary-color}", 7)`);  // replace shade(@primary-color, 5%)
+// unused
+@primary-8: color(~`colorPalette("@{primary-color}", 8)`);
+// unused
+@primary-9: color(~`colorPalette("@{primary-color}", 9)`);
+// unused
+@primary-10: color(~`colorPalette("@{primary-color}", 10)`);
+
+// Background color for `<body>`
+@body-background        : #fff;
+// Base background color for most components
+@component-background   : #fff;
+@font-family            : "Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@code-family            : Consolas, Menlo, Courier, monospace;
+@heading-color          : fade(#000, 85%);
+@text-color             : fade(#000, 65%);
+@text-color-secondary   : fade(#000, 43%);
+@heading-color-dark     : fade(#fff, 97%);
+@text-color-dark        : fade(#fff, 91%);
+@text-color-secondary-dark: fade(#fff, 67%);
+@font-size-base         : 12px;
+@font-size-lg           : @font-size-base + 2px;
+@line-height-base       : 1.5;
+@border-radius-base     : 4px;
+@border-radius-sm       : 2px;
+@placeholder-color      : #aaa;
+
+// LINK
+@link-color             : @primary-color;
+@link-hover-color       : @primary-5;
+@link-active-color      : @primary-7;
+@link-hover-decoration  : none;
+
+// Animation
+@ease-out            : cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in             : cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-in-out         : cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-out-back       : cubic-bezier(0.12, 0.4, 0.29, 1.46);
+@ease-in-back        : cubic-bezier(0.71, -0.46, 0.88, 0.6);
+@ease-in-out-back    : cubic-bezier(0.71, -0.46, 0.29, 1.46);
+@ease-out-circ       : cubic-bezier(0.08, 0.82, 0.17, 1);
+@ease-in-circ        : cubic-bezier(0.6, 0.04, 0.98, 0.34);
+@ease-in-out-circ    : cubic-bezier(0.78, 0.14, 0.15, 0.86);
+@ease-out-quint      : cubic-bezier(0.23, 1, 0.32, 1);
+@ease-in-quint       : cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@ease-in-out-quint   : cubic-bezier(0.86, 0, 0.07, 1);
+
+// Border color
+@border-color-base      : #d9d9d9;        // base border outline a component
+@border-color-split     : #e9e9e9;        // split border inside a component
+@border-width-base      : 1px;            // width of the border for a component
+@border-style-base      : solid;          // style of a components border
+
+// Outline
+@outline-blur-size      : 0;
+@outline-width          : 2px;
+@outline-color          : @primary-color;
+
+// Default background color for disabled states, Collapse wrappers,
+// and several active and hover states.
+@background-color-base  : #f7f7f7;
+@background-color-active: #eee;
+
+// Disabled states
+@disabled-color         : fade(#000, 25%);
+@disabled-bg            : @background-color-base;
+@disabled-color-dark    : fade(#fff, 35%);
+
+// Shadow
+@shadow-color           : rgba(0, 0, 0, .2);
+@box-shadow-base        : @shadow-1-down;
+@shadow-1-up            : 0 -1px 6px @shadow-color;
+@shadow-1-down          : 0 1px 6px @shadow-color;
+@shadow-1-left          : -1px 0 6px @shadow-color;
+@shadow-1-right         : 1px 0 6px @shadow-color;
+@shadow-2               : 0 2px 8px @shadow-color;
+
+// Buttons
+@btn-font-weight        : 500;
+@btn-border-radius-base : @border-radius-base;
+@btn-border-radius-sm   : @border-radius-base;
+
+@btn-primary-color      : #fff;
+@btn-primary-bg         : @primary-color;
+@btn-primary-border     : @primary-color;
+
+@btn-default-color      : @text-color;
+@btn-default-bg         : #fff;
+@btn-default-border     : @border-color-base;
+
+@btn-danger-color       : @error-color;
+@btn-danger-bg          : @background-color-base;
+@btn-danger-border      : @border-color-base;
+
+@btn-disable-color      : @disabled-color;
+@btn-disable-bg         : @disabled-bg;
+@btn-disable-border     : @border-color-base;
+
+@btn-padding-base       : 0 15px;
+@btn-font-size-lg       : @font-size-lg;
+@btn-padding-lg         : @btn-padding-base;
+@btn-padding-sm         : 0 7px;
+
+@btn-height-base        : 28px;
+@btn-height-lg          : 32px;
+@btn-height-sm          : 22px;
+
+@btn-circle-size        : @btn-height-base;
+@btn-circle-size-lg     : @btn-height-lg;
+@btn-circle-size-sm     : @btn-height-sm;
+
+@btn-group-border       : @primary-7;
+
+// Carousel
+// ---
+@carousel-dot-width: 16px;
+@carousel-dot-height: 3px;
+@carousel-dot-active-width: 24px;
+
+// z-index list
+@zindex-affix           : 10;
+@zindex-back-top        : 10;
+@zindex-dialog-mask      : 1000;
+@zindex-dialog           : 1000;
+@zindex-notification    : 1010;
+@zindex-message         : 1010;
+@zindex-popover         : 1030;
+@zindex-picker          : 1050;
+@zindex-dropdown        : 1050;
+@zindex-tooltip         : 1060;
+
+@dialog-mask-bg: rgba(55, 55, 55, 0.6);
+
+// Animation
+@animation-duration-slow: .3s; // dialog
+@animation-duration-base: .2s;
+@animation-duration-fast: .1s; // Tooltip

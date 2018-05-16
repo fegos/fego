@@ -1,0 +1,148 @@
+@import "../../style/mixin/index";
+@input-prefix: ~"@{prefix}-input";
+
+@input-height-base: 28px;
+@input-height-lg: 32px;
+@input-height-sm: 22px;
+@input-padding-vertical: 4px;
+@input-padding-vertical-lg: 6px;
+@input-padding-vertical-sm: 1px;
+@input-padding-horizontal: 7px;
+@affix-width: 12px;
+
+.input(@height;) {
+  cursor: text;
+  display: inline-block;
+  box-sizing: border-box;
+  color: @text-color;
+  font-size: @font-size-base;
+  width: 100%;
+  height: @height;
+  line-height: @line-height-base;
+  padding: @input-padding-vertical @input-padding-horizontal;
+  border: @border-width-base @border-style-base @border-color-base;
+  border-radius: @border-radius-base;
+  transition: all .3s @ease-in-out;
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: @placeholder-color;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: @placeholder-color;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: @placeholder-color;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: @placeholder-color;
+  }
+  // &:hover:not(&-disabled) {
+  // 	border-color: @primary-5;
+  // }
+  &:focus {
+    border-color: @primary-5;
+    outline: 0;
+    box-shadow: 0 0 @outline-blur-size @outline-width fade(@primary-color, 20%);
+  }
+  &-disabled {
+    color: @disabled-color;
+    background-color: @disabled-bg;
+    cursor: not-allowed;
+  }
+}
+
+textarea.@{input-prefix} {
+  .input(auto);
+}
+
+.@{input-prefix}-no-resize {
+  resize: none;
+}
+
+.@{input-prefix} {
+  .input(@input-height-base);
+  &-lg {
+    padding: @input-padding-vertical-lg @input-padding-horizontal;
+    height: @input-height-lg;
+  }
+  &-sm {
+    padding: @input-padding-vertical-sm @input-padding-horizontal;
+    height: @input-height-sm;
+  }
+  &-affix-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .@{input-prefix} {
+      &:not(:first-child) {
+        padding-left: @input-padding-horizontal + @affix-width + 5px;
+      }
+      &:not(:last-child) {
+        padding-right: @input-padding-horizontal + @affix-width + 5px;
+      }
+      &:nth-last-child(3) { // 又有 clear 又有 suffix
+        padding-right: @input-padding-horizontal + @affix-width * 2 + 5px * 2;
+      }
+    }
+  }
+  &-prefix,
+  &-suffix,
+  &-clear {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: @affix-width;
+    font-size: @font-size-base;
+    height: @affix-width;
+    line-height: 1;
+  }
+  &-prefix {
+    left: @input-padding-horizontal;
+    text-align: left;
+  }
+  &-suffix {
+    right: @input-padding-horizontal;
+    text-align: right;
+  }
+  // size 为 default 或 large 时，清楚按钮的尺寸为 16px
+  // size small 的时候清楚按钮的尺寸为 12px
+  &-sm {
+    & + .@{input-prefix}-clear {
+      width: 12px;
+      height: 12px;
+      font-size: 12px;
+    }
+  }
+  &-clear {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    transition: background-color .3s @ease-in-out;
+    .@{input-prefix}-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 0.6em;
+      height: 0.6em;
+      color: #fff;
+    }
+    // &:hover {
+    // 	background-color: rgba(0, 0, 0, 0.43);
+    // }
+    &:last-child {
+      right: @input-padding-horizontal;
+    }
+    &:not(:last-child) {
+      right: @input-padding-horizontal + @affix-width + 5px;
+    }
+    &-hide {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+
+@import "../../style/mixin/index";
+@form-prefix: ~"@{prefix}-form";
+
+.@{form-prefix} {
+  &-item {
+    margin-bottom: 24px;
+    &-label {
+      vertical-align: middle;
+      font-size: 12px;
+      color: @text-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+    &-required {
+      &:before {
+        content: '*';
+        // 星号在浏览器里的字体
+        font-family: SimSun;
+        color: @red-6;
+        margin-right: 4px;
+      }
+    }
+    // label 和 控件 水平排列
+    &-horizontal {
+      .@{form-prefix}-item-label {
+        display: inline-block;
+        width: 25%;
+        height: 32px;
+        line-height: 32px;
+        text-align: right;
+        label {
+          position: relative;
+          &:after {
+            content: ":";
+            margin: 0 8px 0 2px;
+            position: relative;
+            top: -1px;
+          }
+        }
+      }
+      .@{form-prefix}-item-control-wrapper {
+        display: inline-block;
+        width: 75%;
+      }
+    }
+    // label 和 控件 垂直排列
+    &-vertical {
+      .@{form-prefix}-item-label {
+        width: 100%;
+        text-align: left;
+        height: 18px;
+        line-height: 18px;
+        padding-bottom: 8px;
+      }
+      .@{form-prefix}-item-control-wrapper {
+        // div 默认占100%宽，所以不必写，写出来是为了与上面水平排列时的样式形成对照方便看出区别
+        // display: block;
+        // width: 100%;
+      }
+    }
+  }
+
+  &-btns {
+    margin-bottom: 24px;
+    .ns-btn {
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  // 垂直布局 form
+  &-vertical {
+    .@{form-prefix}-item {
+      &-wrapper {
+        // div 默认就是占100%宽，所以不必写，之所以写出来是为了与下面的水平布局时的样式形成对照容易理解
+        // display: block;
+        // width: 100%;
+      }
+    }
+    .@{form-prefix}-btns {
+      &-left-offset {
+        margin-left: 25%;
+      }
+    }
+  }
+
+  // 水平布局 form
+  &-horizontal {
+    .@{form-prefix}-item {
+      margin-right: 16px;
+      &-wrapper {
+        display: inline-block;
+        width: 25%;
+      }
+    }
+    .@{form-prefix}-btns {
+      &-wrapper {
+        display: inline-block;
+      }
+      &-right {
+        float: right;
+        text-align: right;
+      }
+      &-top-correct {
+        margin-top: 2px;
+      }
+      &-top-offset {
+        margin-top: 26px;
+      }
+    }
+  }
+}
